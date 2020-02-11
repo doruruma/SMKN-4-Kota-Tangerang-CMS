@@ -18,6 +18,7 @@ class CreatePagesTable extends Migration
             $table->string('title');
             $table->longText('content');
             $table->string('slug')->unique();
+            $table->boolean('published');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
