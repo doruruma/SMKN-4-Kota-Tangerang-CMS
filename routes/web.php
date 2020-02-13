@@ -25,3 +25,14 @@ Route::post('/login', 'AuthController@postLogin');
 
 Route::get('/CreateMajor', 'MajorController@create');
 Route::resource('major', 'MajorController');
+
+// Post view
+Route::get('admin/posts', 'PostController@get');
+Route::view('admin/post/new', 'posts/CreatePost');
+Route::get('admin/post/{id}', 'PostController@update');
+Route::get('admin/post/edit');
+
+// Post API
+Route::post('admin/post', 'PostController@save');
+Route::put('admin/post/{id}', 'PostController@put');
+Route::get('admin/post/delete/{id}', 'PostController@delete');
