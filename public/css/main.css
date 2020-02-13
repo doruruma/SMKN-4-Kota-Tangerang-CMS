@@ -1,11 +1,22 @@
-/* Login */
-body{
-  background: #0830a1 !important;
+html, body {
+  font-family: 'Raleway', sans-serif !important;
+  font-weight: 600
 }
-/* #loginTitle{
-  color: #0830a1;
-} */
+
+/* Login */
 small{
   font-size: 10px !important;
+}
+/*  */
+
+/* Sidebar */
+.sidebar{
+  background: #28479c;
+}
+/*  */
+
+/* Public */
+.card{
+  border-radius: 0 !important;
 }
 /*  */

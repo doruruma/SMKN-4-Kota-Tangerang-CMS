@@ -16,7 +16,7 @@ class AuthMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user()) {
+        if (Auth::check()) {
             return redirect('/');
         }
         return $next($request);

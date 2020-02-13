@@ -14,7 +14,7 @@ class AuthController extends Controller
     public function __construct()
     {
         // My Own Auth
-        $this->middleware('AndraAuth');
+        $this->middleware('AndraAuth')->except(['logout']);
     }
 
     public function login()
@@ -41,6 +41,6 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect('/');
+        return redirect('/login');
     }
 }

@@ -14,8 +14,17 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard.index');
 })->middleware('auth');     // default auth middleware
+
+// Post Route
+Route::get('/posts', function() {
+    return view('post.index');
+})->middleware('auth');
+Route::get('/posts/add', function() {
+    return view('post.create');
+})->middleware('auth');
+// ---
 
 // Auth Route
 Route::get('/login', 'AuthController@login')->name('login');
