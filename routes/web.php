@@ -11,6 +11,15 @@
 |
 */
 
+use App\Http\Controllers\TeacherController;
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/teacher','TeacherController@teacher');
+Route::get('/teacher/add','TeacherController@add');
+Route::post('/teacher/store','TeacherController@store');
+Route::get('/teacher/edit/{id}','TeacherController@put');
+Route::post('/teacher/update/{id}','TeacherController@update');
+Route::get('/teacher/delete/{id}','TeacherController@delete');
