@@ -8,12 +8,17 @@
 
 @section('plugin')
   <link rel="stylesheet" href="{{ asset('/vendor/datatables/dataTables.bootstrap4.min.css') }}">
-  <script src="{{ asset('/vendor/datatables/jquery.dataTables.min.js') }}" defer></script>
-  <script src="{{ asset('/vendor/datatables/dataTables.bootstrap4.min.js') }}" defer></script>
+  <script src="{{ asset('/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+  <script src="{{ asset('/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
 @endsection
 
-@section('pageJS')
-  <script src="{{ asset('/js/postIndex.js') }}" defer></script>
+@section('script')
+<script>
+  $(document).ready(function () {
+    $('.post').addClass('active')
+    $('.table').DataTable()
+  })
+</script>
 @endsection
 
 @section('content')
@@ -62,4 +67,4 @@
     </div>
   </div>
   @include('layouts.footer')
-@endsection  
+@endsection

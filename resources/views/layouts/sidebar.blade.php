@@ -94,8 +94,8 @@
         </a>
         <div id="collapseTeacher" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner">
-            <a class="collapse-item" href="utilities-color.html"><i class="fas fa-fw fa-folder text-primary mx-1"></i> Teacher Data</a>
-            <a class="collapse-item" href="utilities-border.html"><i class="fas fa-fw fa-plus text-primary mx-1"></i> Add Teacher</a>
+            <a class="collapse-item" href="{{ route('teacher.index') }}"><i class="fas fa-fw fa-folder text-primary mx-1"></i> Teacher Data</a>
+            <a class="collapse-item" href="{{ route('teacher.add') }}"><i class="fas fa-fw fa-plus text-primary mx-1"></i> Add Teacher</a>
           </div>
         </div>
       </li>

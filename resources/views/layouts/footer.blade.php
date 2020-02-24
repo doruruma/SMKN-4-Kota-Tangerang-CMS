@@ -1,22 +1,20 @@
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white shadow">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; LPC 2020</span>
-          </div>
-        </div>
-      </footer>
-      <!-- End of Footer -->
-      
-      </div>
-      <!-- End of Content Wrapper -->
+<!-- Footer -->
+<footer class="sticky-footer bg-white shadow">
+  <div class="container my-auto">
+    <div class="copyright text-center my-auto">
+      <span>Copyright &copy; LPC 2020</span>
+    </div>
+  </div>
+</footer>
+<!-- End of Footer -->
 
-      </div>
-      <!-- End of Page Wrapper -->
+</div>
+<!-- End of Content Wrapper -->
 
-      <!-- Scroll to Top Button-->
-      <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-      </a>
-    </body>
-  </html>
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+  <i class="fas fa-angle-up"></i>
+</a>

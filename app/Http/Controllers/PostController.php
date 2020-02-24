@@ -27,7 +27,7 @@ class PostController extends Controller
     // check credential
     private function checkCredential($userId, $fn)
     {
-        if($userId != $this->user->id) {
+        if ($userId != $this->user->id) {
             return $fn();
         }
     }
@@ -47,7 +47,7 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
 
         // Check credential user
-        if($this->user->id != $post->user_id) {
+        if ($this->user->id != $post->user_id) {
             return redirect('/admin/posts');
         }
 
@@ -75,7 +75,7 @@ class PostController extends Controller
             'published' => 'required|in:0,1'
         ]);
 
-        if($validated->fails()) {
+        if ($validated->fails()) {
             // if failed, response to create view with error
             return response()->json([
                 'message' => 'failed',
@@ -125,7 +125,7 @@ class PostController extends Controller
             'published' => 'required|in:0,1'
         ]);
 
-        if($validated->fails()) {
+        if ($validated->fails()) {
             // if failed, redirect to create view with error
             return response()->json([
                 'message' => 'failed',
@@ -137,7 +137,7 @@ class PostController extends Controller
             $post = Post::find($id);
 
             // Check credential user
-            $this->checkCredential($post->user_id, function() {
+            $this->checkCredential($post->user_id, function () {
                 return new \Exception("Unauthorized user");
             });
 
@@ -174,7 +174,7 @@ class PostController extends Controller
             'id' => 'required|exists:posts,id',
         ]);
 
-        if($validated->fails()) {
+        if ($validated->fails()) {
             // if failed, redirect to create view with error
             return redirect('/admin/posts');
         }
@@ -183,7 +183,7 @@ class PostController extends Controller
             $post = Post::find($id);
 
             // Check credential user
-            $this->checkCredential($post->user_id, function() {
+            $this->checkCredential($post->user_id, function () {
                 return new \Exception("Unauthorized user");
             });
 

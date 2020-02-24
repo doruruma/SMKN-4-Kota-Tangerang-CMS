@@ -11,20 +11,15 @@
 |
 */
 
+// Teacher Route
+Route::get('/admin/teacher','TeacherController@teacher')->name('teacher.index');
+Route::get('/admin/teacher/add','TeacherController@add')->name('teacher.add');
+Route::post('/admin/teacher/store','TeacherController@store')->name('teacher.store');
+Route::get('/admin/teacher/edit/{id}','TeacherController@put');
+Route::post('/admin/teacher/update/{id}','TeacherController@update');
+Route::get('/admin/teacher/delete/{id}','TeacherController@delete');
+
 // Dashboard
-use App\Http\Controllers\TeacherController;
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/teacher','TeacherController@teacher');
-Route::get('/teacher/add','TeacherController@add');
-Route::post('/teacher/store','TeacherController@store');
-Route::get('/teacher/edit/{id}','TeacherController@put');
-Route::post('/teacher/update/{id}','TeacherController@update');
-Route::get('/teacher/delete/{id}','TeacherController@delete');
-
 Route::get('/', function () {
     return view('dashboard.index');
 })->middleware('auth');
@@ -34,7 +29,7 @@ Route::get('/admin/profile', 'AdminController@index')->name('admin.index');
 Route::get('/admin/profile/password', 'AdminController@editPassword')->name('admin.password');
 Route::get('/admin/profile/edit', 'AdminController@edit')->name('admin.edit');
 Route::post('/admin/profile/postPassword', 'AdminController@postPassword')->name('admin.postPassword');
-Route::post('/admin/profile/update', 'AdminController@update')->name('admin.update');
+Route::put('/admin/profile/update', 'AdminController@update')->name('admin.update');
 
 // Auth Route
 Route::get('/login', 'AuthController@login')->name('login');

@@ -13,7 +13,7 @@ class TeacherController extends Controller
     {
         $teacher = Teacher::all();
 
-        return view('Teacher',[
+        return view('teacher.index',[
             'teacher' => $teacher,
             'title' => 'Teacher|index'
             
@@ -22,8 +22,7 @@ class TeacherController extends Controller
 
     public function add()
     {
-        $title = 'Teacher|Add';
-        return view('Teacher_add',['title' => $title]);
+        return view('teacher.create');
     }
 
     public function store(Request $request)
@@ -68,9 +67,8 @@ class TeacherController extends Controller
     public function put($id)
     {
         //put all data from db to view update
-        $title = 'Teacher|Edit';
         $teacher = Teacher::find($id);
-        return view('Teacher_edit', ['teacher' => $teacher, 'title' => $title]);
+        return view('teacher.edit', ['teacher' => $teacher]);
     }
 
     public function update(Request $request, $id)

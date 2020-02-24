@@ -6,12 +6,6 @@
 
 @section('bodyClass', 'bg-light')
 
-@section('plugin')
-@endsection
-
-@section('pageJS')
-@endsection
-
 @section('content')
   @include('layouts.sidebar')
   @include('layouts.nav')
@@ -38,6 +32,12 @@
                 <div class="col-10">
                   <input type="email" name="email" id="email" class="form-control form-control-sm" value="{{ old('email') ?? Auth::user()->email }}">
                   <small class="text-danger">{{ $errors->first('email') }}</small>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-3 offset-md-2">
+                  <img src="{{ asset('img/default_profile.png') }}" alt="" class="img-thumbnail">
                 </div>
               </div>
 
