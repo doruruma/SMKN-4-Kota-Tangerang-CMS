@@ -7,16 +7,15 @@ $(document).ready(() => {
     removeButtons: 'Image'
   })
 
-  $("#post_submit").on('submit', function (e) {
+  $("#page_submit").on('submit', function (e) {
     e.preventDefault()
 
     $.ajax({
-      url: "/admin/post",
+      url: "/admin/page",
       method: "POST",
       data: {
         title: $("#title").val(),
         content: res.getData(),
-        category_id: $("#cat").val(),
         published: $("#publish").is(':checked') ? 1 : 0,
         _token: $("input[name='_token']").val()
       },
@@ -27,19 +26,6 @@ $(document).ready(() => {
         console.log(rej)
       }
     })
-  })
-
-  $.ajax({
-    url: "/api/categories",
-    type: "GET",
-    success: function (res) {
-      $("#cat").html("")
-      res.map((value, index) => {
-        $("#cat").append(`
-            <option value="${value.id}">${value.category}</option>
-        `)
-      })
-    }
   })
 
   function slug(text) {

@@ -48,3 +48,13 @@ Route::get('/admin/post/{id}', 'PostController@edit');
 Route::post('/admin/post', 'PostController@save');
 Route::put('/admin/post/{id}', 'PostController@put');
 Route::get('/admin/post/delete/{id}', 'PostController@delete');
+
+// Page view
+Route::get('/admin/pages', 'PageController@get');
+Route::get('/admin/page/new', 'PageController@new');
+Route::get('/admin/page/{id}', 'PageController@edit');
+
+// Page API
+Route::post('/admin/page', 'PageController@save');
+Route::put('/admin/page/{id}', 'PageController@put');
+Route::get('/admin/page/delete/{id}', 'PageController@delete');
