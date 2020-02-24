@@ -1,5 +1,5 @@
       <!-- Footer -->
-      <footer class="sticky-footer bg-white shadow-sm">
+      <footer class="sticky-footer bg-white shadow">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
             <span>Copyright &copy; LPC 2020</span>
@@ -7,7 +7,7 @@
         </div>
       </footer>
       <!-- End of Footer -->
-
+      
       </div>
       <!-- End of Content Wrapper -->
 

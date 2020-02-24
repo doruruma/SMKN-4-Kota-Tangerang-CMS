@@ -1,89 +1,65 @@
-<head>
-    <script src="//cdn.ckeditor.com/4.13.1/full/ckeditor.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-</head>
+{{-- Author : Andra Yuusha --}}
 
-<body>
-    <table>
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Title</th>
-                <th>Category</th>
-                <th>Date</th>
-                <th>Status</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            @php $no = 0; @endphp
-            @foreach ($posts as $post)
+@extends('layouts.app')
+
+@section('title', 'LPC | Post')
+
+@section('bodyClass', 'bg-light')
+
+@section('plugin')
+  <link rel="stylesheet" href="{{ asset('/vendor/datatables/dataTables.bootstrap4.min.css') }}">
+  <script src="{{ asset('/vendor/datatables/jquery.dataTables.min.js') }}" defer></script>
+  <script src="{{ asset('/vendor/datatables/dataTables.bootstrap4.min.js') }}" defer></script>
+@endsection
+
+@section('pageJS')
+  <script src="{{ asset('/js/postIndex.js') }}" defer></script>
+@endsection
+
+@section('content')
+  @include('layouts.sidebar')
+  @include('layouts.nav')
+  <div class="container" style="min-height:600px">
+    <h1 class="h3 mb-3 text-gray-800">Post List</h1>
+    <div class="row no-gutters">
+      <button class="btn ml-auto mx-1 btn-primary my-2">Add Posts</button>
+      <div class="col-lg-12 col-md-6 col-sm-12 px-1 py-1">
+        <div class="card shadow-sm border-light">
+          <div class="card-body">
+            <table class="table">
+
+              <thead>
                 <tr>
-                    <td>{{++$no}}</td>
-                    <td>{{ $post->title }}</td>
-                    <td>{{ $post->category->category }}</td>
-                    <td>{{ $post->created_at }}</td>
-                    <td>{{ $post->published == 1 ? "Published" : "Draft" }}</td>
-                    <td>
-                        <a href="/admin/post/delete/{{ $post->id }}" onclick="return confirm('Remove this post?')">Remove</a> <a href="/admin/post/{{ $post->id }}">Edit</a>
-                    </td>
+                  <th>No</th>
+                  <th>Title</th>
+                  <th>Category</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                  <th>Action</th>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
+              </thead>
 
-    <script>
-        $(document).ready(() => {
-            $("#title").on('input', function() {
-                $("#slug_preview").val(slug( $(this).val() ))
-            })
+              <tbody>
+                @php $no = 0; @endphp
+                @foreach ($posts as $post)
+                <tr>
+                  <td>{{++$no}}</td>
+                  <td>{{ $post->title }}</td>
+                  <td>{{ $post->category->category }}</td>
+                  <td>{{ $post->created_at }}</td>
+                  <td>{{ $post->published == 1 ? "Published" : "Draft" }}</td>
+                  <td>
+                    <a href="/admin/post/delete/{{ $post->id }}" onclick="return confirm('Remove this post?')">Remove</a> <a href="/admin/post/{{ $post->id }}">Edit</a>
+                  </td>
+                </tr>
+                @endforeach
+              </tbody>
 
-            $("#post_submit").on('submit', function(e) {
-                e.preventDefault()
-
-                $.ajax({
-                    url: "/admin/post",
-                    method: "POST",
-                    data: {
-                        title: $("#title").val(),
-                        content: $("#editor").val(),
-                        category_id: $("#cat").val(),
-                        published: $("#publish").is(':checked') ? 1 : 0,
-                        _token: $("#_token").val()
-                    },
-                    success: function(res) {
-                        console.log(res)
-                    },
-                    error: function(rej) {
-                        console.log(rej)
-                    }
-                })
-            })
-
-            $.ajax({
-                url: "/api/categories",
-                type: "GET",
-                success: function(res) {
-                    $("#cat").html("")
-                    res.map((value, index) => {
-                        $("#cat").append(`
-                            <option value="${value.id}">${value.category}</option>
-                        `)
-                    })
-                }
-            })
-
-            function slug(text) {
-                return text.toString().toLowerCase()
-                            .replace(/\s+/g, '-')           // Replace spaces with -
-                            .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
-                            .replace(/\-\-+/g, '-')         // Replace multiple - with single -
-                            .replace(/^-+/, '')             // Trim - from start of text
-                            .replace(/-+$/, '');            // Trim - from end of text
-            }
-            let res = CKEDITOR.replace('editor', {
-                removeButtons: 'Image'
-            })
-        })
-    </script>
-</body>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  @include('layouts.footer')
+@endsection  

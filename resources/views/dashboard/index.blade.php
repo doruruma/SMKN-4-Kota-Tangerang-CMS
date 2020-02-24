@@ -9,7 +9,7 @@
   @include('layouts.sidebar')
   @include('layouts.nav')
     <div class="container">
-      <h1 class="h3 mb-4 text-gray-800">Dashboard</h1>
+      <h1 class="h3 mb-4 text-gray-800">{{ Auth::user()->name }}</h1>
 
       <div class="row mb-4">
         <div class="col-lg-5 col-md-6 col-sm-12">

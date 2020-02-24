@@ -12,9 +12,16 @@ use Illuminate\Support\Str;
 class PostController extends Controller
 {
     private $user;
+
     public function __construct()
     {
+        $this->middleware('auth')->except(['save', 'getCategories']);
         $this->user = User::find(2);
+    }
+
+    public function new()
+    {
+        return view('post.create');
     }
 
     // check credential
@@ -29,13 +36,13 @@ class PostController extends Controller
     {
         $posts = Post::get();
 
-        return view('posts.ViewPosts', [
+        return view('post.index', [
             'posts' => $posts
         ]);
     }
 
     // Update post preview
-    public function update($id)
+    public function edit($id)
     {
         $post = Post::findOrFail($id);
 
@@ -44,7 +51,7 @@ class PostController extends Controller
             return redirect('/admin/posts');
         }
 
-        return view('posts.EditPost', [
+        return view('post.edit', [
             'post' => $post,
             'categories' => Category::get()
         ]);

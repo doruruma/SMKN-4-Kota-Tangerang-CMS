@@ -20,7 +20,7 @@
               <div class="col-12">
                 <div class="form-group">
                   <label for="email" class="text-muted font-weight-light">Email</label>
-                  <input type="email" name="email" id="email" class="form-control form-control-sm" placeholder="Your E-mail here">
+                  <input type="email" name="email" id="email" class="form-control form-control-sm" placeholder="Your E-mail here" value="{{ old('email') }}" autocomplete="off">
                   <small class="text-danger">{{ $errors->first('email') }}</small>
                 </div>
               </div>

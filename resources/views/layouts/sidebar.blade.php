@@ -13,28 +13,28 @@
       </a>
 
       <!-- Nav Item - Dashboard -->
-      <li class="nav-item dashboard">
-        <a class="nav-link" href="index.html">
-          <i class="fas fa-fw fa-tsachometer-alt"></i>
-          <span>Dashboard</span></a>
+      <li class="nav-item mt-3 dashboard">
+        <a class="nav-link" href="{{ url('/') }}">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Dashboard</span>
+        </a>
       </li>
 
       <!-- Heading -->
-      <div class="sidebar-heading">
+      <div class="sidebar-heading mt-3">
         Content Management
       </div>
 
       <!-- Nav Item - Posts Collapse Menu -->
-      <li class="nav-item posts">
+      <li class="nav-item post">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePost" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fas-cog"></i>
           <span>Posts</span>
         </a>
         <div id="collapsePost" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Posts Menu</h6>
-            <a class="collapse-item" href="{{ url('/posts') }}">Posts Data</a>
-            <a class="collapse-item" href="{{ url('/posts/add') }}">Add Posts</a>
+          <div class="bg-white py-2 collapse-inner">
+            <a class="collapse-item" href="{{ url('/admin/posts') }}"><i class="fas fa-fw fa-folder mx-1"></i> Posts Data</a>
+            <a class="collapse-item" href="{{ url('/admin/post/new') }}"><i class="fas fa-fw fa-plus mx-1"></i> Add Posts</a>
           </div>
         </div>
       </li>
@@ -46,31 +46,29 @@
           <span>Pages</span>
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Pages Menu</h6>
-            <a class="collapse-item" href="utilities-color.html">Pages Data</a>
-            <a class="collapse-item" href="utilities-border.html">Add Pages</a>
+          <div class="bg-white py-2 collapse-inner">
+            <a class="collapse-item" href="utilities-color.html"><i class="fas fa-fw fa-folder text-primary mx-1"></i> Pages Data</a>
+            <a class="collapse-item" href="utilities-border.html"><i class="fas fa-fw fa-plus text-primary mx-1"></i> Add Pages</a>
           </div>
         </div>
       </li>
 
       <!-- Nav Item - Media Collapse Menu -->
-      <li class="nav-item media">
+      <li class="nav-item medias">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMedia" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-fw fa-wsrench"></i>
           <span>Media</span>
         </a>
         <div id="collapseMedia" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Media Menu</h6>
-            <a class="collapse-item" href="utilities-color.html">Media Data</a>
-            <a class="collapse-item" href="utilities-border.html">Add Media</a>
+          <div class="bg-white py-2 collapse-inner">
+            <a class="collapse-item" href="utilities-color.html"><i class="fas fa-fw fa-folder text-primary mx-1"></i> Media Data</a>
+            <a class="collapse-item" href="utilities-border.html"><i class="fas fa-fw fa-plus text-primary mx-1"></i> Add Media</a>
           </div>
         </div>
       </li>
 
       <!-- Heading -->
-      <div class="sidebar-heading">
+      <div class="sidebar-heading mt-3">
         School Admin
       </div>
 
@@ -81,10 +79,9 @@
           <span>Official</span>
         </a>
         <div id="collapseOfficial" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Media Menu</h6>
-            <a class="collapse-item" href="utilities-color.html">Official Data</a>
-            <a class="collapse-item" href="utilities-border.html">Add Official</a>
+          <div class="bg-white py-2 collapse-inner">
+            <a class="collapse-item" href="utilities-color.html"><i class="fas fa-fw fa-folder text-primary mx-1"></i> Official Data</a>
+            <a class="collapse-item" href="utilities-border.html"><i class="fas fa-fw fa-plus text-primary mx-1"></i> Add Official</a>
           </div>
         </div>
       </li>
@@ -96,10 +93,9 @@
           <span>Teacher</span>
         </a>
         <div id="collapseTeacher" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Media Menu</h6>
-            <a class="collapse-item" href="utilities-color.html">Teacher Data</a>
-            <a class="collapse-item" href="utilities-border.html">Add Teacher</a>
+          <div class="bg-white py-2 collapse-inner">
+            <a class="collapse-item" href="utilities-color.html"><i class="fas fa-fw fa-folder text-primary mx-1"></i> Teacher Data</a>
+            <a class="collapse-item" href="utilities-border.html"><i class="fas fa-fw fa-plus text-primary mx-1"></i> Add Teacher</a>
           </div>
         </div>
       </li>
@@ -111,10 +107,9 @@
           <span>Major</span>
         </a>
         <div id="collapseMajor" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Media Menu</h6>
-            <a class="collapse-item" href="utilities-color.html">Major Data</a>
-            <a class="collapse-item" href="utilities-border.html">Add Major</a>
+          <div class="bg-white py-2 collapse-inner">
+            <a class="collapse-item" href="{{ route('major.index') }}"><i class="fas fa-fw fa-folder text-primary mx-1"></i> Major Data</a>
+            <a class="collapse-item" href="{{ route('major.create') }}"><i class="fas fa-fw fa-plus text-primary mx-1"></i> Add Major</a>
           </div>
         </div>
       </li>

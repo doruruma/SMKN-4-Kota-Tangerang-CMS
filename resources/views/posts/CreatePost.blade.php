@@ -1,81 +1,89 @@
-<head>
-    <script src="//cdn.ckeditor.com/4.13.1/full/ckeditor.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-</head>
+{{-- Author : Andra Yuusha --}}
 
-<body>
-    <form action="" id="post_submit" method="post">
+@extends('layouts.app')
 
-        <input type="hidden" id="_token" value="{{ csrf_token() }}">
-        <input type="text" name="title" id="title"/>
-        <input type="text" readonly name="slug_preview" id="slug_preview"/>
+@section('title', 'LPC | Add New Post')
 
-        <select name="cat" id="cat">
+@section('bodyClass', 'bg-light')
 
-        </select>
+@section('plugin')
+  <script src="//cdn.ckeditor.com/4.13.1/full/ckeditor.js" defer></script>
+@endsection
 
-        <input type="checkbox" name="publish" id="publish"/> <label for="publish">Publish</label>
+@section('pageJS')
+  <script src="{{ asset('/js/postCreate.js') }}" defer></script>
+@endsection
 
-        <textarea id="editor" name="editor">
+@section('content')
+  @include('layouts.sidebar')
+  @include('layouts.nav')
+  <div class="container mb-5" style="min-height:600px">
+    <h1 class="h3 mb-3 text-gray-800">Add Post Form</h1>
+    <div class="row no-gutters">
+      <div class="col-lg-12 col-md-6 col-sm-12 px-1 py-1">
+        <div class="card shadow-sm border-light">
+          <div class="card-body">
+            <form action="" id="post_submit" method="POST">
+              @csrf
 
-        </textarea>
+              <div class="form-group row">
+                <label for="title" class="col-sm-2 col-form-label">Title</label>
+                <div class="col-sm-10">
+                  <input type="text" name="title" id="title" class="form-control form-control-sm">
+                  <small class="text-danger">{{ $errors->first('title') }}</small>
+                </div>
+              </div>
 
-        <button type="submit">Submit</button>
-    </form>
+              <div class="form-group row">
+                <label for="slug_preview" class="col-sm-2 col-form-label">Slug Preview</label>
+                <div class="col-sm-10">
+                  <input type="text" name="slug_preview" id="slug_preview" class="form-control form-control-sm">
+                </div>
+              </div>
 
-    <script>
-        $(document).ready(() => {
-            $("#title").on('input', function() {
-                $("#slug_preview").val(slug( $(this).val() ))
-            })
+              <div class="form-group row">
+                <label for="cat" class="col-sm-2 col-form-label">Category</label>
+                <div class="col-sm-2">
+                  <select name="cat" id="cat" class="form-control form-control-sm">
+                    <option value="" selected disabled>Select Category</option>
+                  </select>
+                </div>
+              </div>
 
-            let res = CKEDITOR.replace('editor', {
-                removeButtons: 'Image'
-            })
+              {{-- <div class="form-group row">
+                <label for="publish" class="col-sm-2 col-form-label">Publish</label>
+                <div class="col-sm-10">
+                  <input type="checkbox" name="publish" id="publish" class="form-control">
+                </div>
+              </div> --}}
 
-            $("#post_submit").on('submit', function(e) {
-                e.preventDefault()
+              <div class="form-group row">
+                <div class="col-md-10 offset-md-2">
+                  <div class="form-check">
+                    <input class="form-check-input" name="publish" type="checkbox" id="publish">
+                    <label class="form-check-label" for="publish">
+                      Publish
+                    </label>
+                  </div>
+                </div>
+              </div>
 
-                $.ajax({
-                    url: "/admin/post",
-                    method: "POST",
-                    data: {
-                        title: $("#title").val(),
-                        content: res.getData(),
-                        category_id: $("#cat").val(),
-                        published: $("#publish").is(':checked') ? 1 : 0,
-                        _token: $("#_token").val()
-                    },
-                    success: function(res) {
-                        console.log(res)
-                    },
-                    error: function(rej) {
-                        console.log(rej)
-                    }
-                })
-            })
+              <div class="form-group row">
+                <label for="editor" class="col-sm-2 col-form-label">Content</label>
+                <div class="col-sm-10">
+                  <textarea name="editor" id="editor"></textarea>
+                </div>
+              </div>
 
-            $.ajax({
-                url: "/api/categories",
-                type: "GET",
-                success: function(res) {
-                    $("#cat").html("")
-                    res.map((value, index) => {
-                        $("#cat").append(`
-                            <option value="${value.id}">${value.category}</option>
-                        `)
-                    })
-                }
-            })
+              <div class="form-group">
+                <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+              </div>
 
-            function slug(text) {
-                return text.toString().toLowerCase()
-                            .replace(/\s+/g, '-')           // Replace spaces with -
-                            .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
-                            .replace(/\-\-+/g, '-')         // Replace multiple - with single -
-                            .replace(/^-+/, '')             // Trim - from start of text
-                            .replace(/-+$/, '');            // Trim - from end of text
-            }
-        })
-    </script>
-</body>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  @include('layouts.footer')
+@endsection

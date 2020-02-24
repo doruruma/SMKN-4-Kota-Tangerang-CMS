@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-  $('.posts').addClass('active')
+  $('.major').addClass('active')
   $('.table').DataTable()
 
 })
