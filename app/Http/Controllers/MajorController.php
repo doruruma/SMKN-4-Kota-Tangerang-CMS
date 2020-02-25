@@ -26,7 +26,7 @@ class MajorController extends Controller
      */
     public function create()
     {
-        return view('major.create_major');
+        return view('major.create');
     }
 
     /**
@@ -83,7 +83,7 @@ class MajorController extends Controller
     public function edit($id)
     {
         $major = Major::find($id);
-        return view('major.edit_major', compact('major'));
+        return view('major.edit', compact('major'));
     }
 
     /**

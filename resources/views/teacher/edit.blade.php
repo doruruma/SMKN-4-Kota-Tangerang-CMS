@@ -6,8 +6,17 @@
 
 @section('bodyClass', 'bg-light')
 
-@section('pageJS')
-  <script src="{{ asset('/js/teacherCreate.js') }}" defer></script>
+@section('script')
+  <script>
+    $(document).ready(function () {
+      $('.teacher').addClass('active')
+      $('.custom-file-input').on('change', function () {
+        let fileName = $(this).val().split('\\').pop()
+        $(this).next('.custom-file-label').addClass('selected').html(fileName)
+        $('.img-thumbnail').attr('src', window.URL.createObjectURL(this.files[0]))
+      })
+    })
+  </script>
 @endsection
 
 @section('content')
@@ -41,6 +50,12 @@
               <div class="form-group row mt-3" style="margin-bottom:5px">
                 <div class="col-3 offset-md-2">
                   <img src="{{ asset('img/{{ $teacher->img }}') }}" class="img-thumbnail" style="width:200px">
+                </div>
+              </div>
+
+              <div class="form-group row mt-3" style="margin-bottom:5px">
+                <div class="col-3 offset-md-2">
+                  <img src="{{ asset('img/default_profile.png') }}" class="img-thumbnail" style="width:200px">
                 </div>
               </div>
 

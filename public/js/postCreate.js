@@ -1,6 +1,6 @@
 $(document).ready(() => {
   $("#title").on('input', function () {
-    $("#slug_preview").val(slug($(this).val()))
+    $("input[name='_token']").val(slug($(this).val()))
   })
 
   let res = CKEDITOR.replace('editor', {

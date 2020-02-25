@@ -6,6 +6,18 @@
 
 @section('bodyClass', 'bg-light')
 
+@section('script')
+  <script>
+    $(document).ready(function () {
+      $('.custom-file-input').on('change', function () {
+        let fileName = $(this).val().split('\\').pop()
+        $(this).next('.custom-file-label').addClass('selected').html(fileName)
+        $('.img-thumbnail').attr('src', window.URL.createObjectURL(this.files[0]))
+      })
+    })
+  </script>
+@endsection
+
 @section('content')
   @include('layouts.sidebar')
   @include('layouts.nav')

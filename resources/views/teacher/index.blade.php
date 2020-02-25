@@ -12,8 +12,13 @@
   <script src="{{ asset('/vendor/datatables/dataTables.bootstrap4.min.js') }}" defer></script>
 @endsection
 
-@section('pageJS')
-  <script src="{{ asset('/js/teacherIndex.js') }}" defer></script>
+@section('script')
+  <script>
+    $(document).ready(function() {
+      $('.teacher').addClass('active')
+      $('.table').DataTable()
+    })
+  </script>
 @endsection
 
 @section('content')
