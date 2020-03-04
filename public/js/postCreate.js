@@ -1,6 +1,7 @@
 $(document).ready(() => {
+
   $("#title").on('input', function () {
-    $("input[name='_token']").val(slug($(this).val()))
+    $("#slug_preview").val(slug($(this).val()))
   })
 
   let res = CKEDITOR.replace('editor', {
@@ -22,6 +23,12 @@ $(document).ready(() => {
       },
       success: function (res) {
         console.log(res)
+        Swal.fire({
+          title: "SUCCESS",
+          text: "Data Inserted Successfully",
+          icon: "success"
+        })
+        document.location.href = '/admin/posts'
       },
       error: function (rej) {
         console.log(rej)
