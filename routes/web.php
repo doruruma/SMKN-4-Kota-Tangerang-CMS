@@ -16,7 +16,7 @@ Route::get('/admin/teacher','TeacherController@teacher')->name('teacher.index');
 Route::get('/admin/teacher/add','TeacherController@add')->name('teacher.add');
 Route::post('/admin/teacher/store','TeacherController@store')->name('teacher.store');
 Route::get('/admin/teacher/edit/{id}','TeacherController@put');
-Route::post('/admin/teacher/update/{id}','TeacherController@update');
+Route::put('/admin/teacher/update/{id}','TeacherController@update');
 Route::get('/admin/teacher/delete/{id}','TeacherController@delete');
 
 // Dashboard
@@ -40,21 +40,21 @@ Route::post('/login', 'AuthController@postLogin');
 Route::resource('major', 'MajorController');
 
 // Post view
-Route::get('/admin/posts', 'PostController@get');
-Route::get('/admin/post/new', 'PostController@new');
-Route::get('/admin/post/{id}', 'PostController@edit');
+Route::get('/admin/posts', 'PostController@get')->name('post.index');
+Route::get('/admin/post/new', 'PostController@new')->name('post.new');
+Route::get('/admin/post/{id}', 'PostController@edit')->name('post.edit');
 
 // Post API
-Route::post('/admin/post', 'PostController@save');
-Route::put('/admin/post/{id}', 'PostController@put');
-Route::get('/admin/post/delete/{id}', 'PostController@delete');
+Route::post('/admin/post', 'PostController@save')->name('post.store');
+Route::put('/admin/post/{id}', 'PostController@put')->name('post.update');
+Route::get('/admin/post/delete/{id}', 'PostController@delete')->name('post.delete');
 
 // Page view
-Route::get('/admin/pages', 'PageController@get');
-Route::get('/admin/page/new', 'PageController@new');
-Route::get('/admin/page/{id}', 'PageController@edit');
+Route::get('/admin/pages', 'PageController@get')->name('page.index');
+Route::get('/admin/page/new', 'PageController@new')->name('page.new');
+Route::get('/admin/page/{id}', 'PageController@edit')->name('page.edit');
 
 // Page API
-Route::post('/admin/page', 'PageController@save');
-Route::put('/admin/page/{id}', 'PageController@put');
-Route::get('/admin/page/delete/{id}', 'PageController@delete');
+Route::post('/admin/page', 'PageController@save')->name('post.store');
+Route::put('/admin/page/{id}', 'PageController@put')->name('post.update');
+Route::get('/admin/page/delete/{id}', 'PageController@delete')->name('post.delete');
