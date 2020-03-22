@@ -54,7 +54,7 @@ class PageController extends Controller
             $page->title = $req->title;
             $page->content = $req->content;
             $page->published = $req->published;
-            $page->user_id = 1;
+            $page->user_id = $req->user_id;
             $page->slug = Str::slug($req->title);
             $page->save();
         } catch(\Exception $e) {
@@ -100,7 +100,7 @@ class PageController extends Controller
             $page->title = $req->title;
             $page->content = $req->content;
             $page->published = $req->published;
-            $page->user_id = 1;
+            $page->user_id = $req->user_id;
             $page->slug = Str::slug($req->title);
             $page->save();
         } catch(\Exception $e) {

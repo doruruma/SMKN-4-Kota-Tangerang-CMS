@@ -28,6 +28,7 @@
                 url: "/admin/page/"+$("#id").val(),
                 method: "POST",
                 data: {
+                    user_id: "{{ Auth::user()->id }}",
                     title: $("#title").val(),
                     content: res.getData(),
                     published: $("#publish").is(':checked') ? 1 : 0,

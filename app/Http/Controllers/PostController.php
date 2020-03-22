@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Category;
-use App\User;
 use App\Post;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -16,7 +16,6 @@ class PostController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->except(['save', 'getCategories']);
-        $this->user = User::find(2);
     }
 
     public function new()
@@ -27,7 +26,7 @@ class PostController extends Controller
     // check credential
     private function checkCredential($userId, $fn)
     {
-        if ($userId != $this->user->id) {
+        if ($userId != Auth::user()->id) {
             return $fn();
         }
     }
@@ -47,7 +46,7 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
 
         // Check credential user
-        if ($this->user->id != $post->user_id) {
+        if (Auth::user()->id != $post->user_id) {
             return redirect('/admin/posts');
         }
 
@@ -85,7 +84,7 @@ class PostController extends Controller
 
         try {
             $post = new Post;
-            $post->user_id = $this->user->id;
+            $post->user_id = $req->user_id;
             $post->title = $req->title;
             $post->category_id = $req->category_id;
             $post->content = $req->content;
@@ -141,7 +140,7 @@ class PostController extends Controller
                 return new \Exception("Unauthorized user");
             });
 
-            $post->user_id = $this->user->id;
+            $post->user_id = $req->user_id;
             $post->title = $req->title;
             $post->content = $req->content;
             $post->category_id = $req->category_id;

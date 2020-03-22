@@ -25,6 +25,7 @@
           <div class="card-body">
             <form action="" id="page_submit" method="POST">
               @csrf
+                <input type="hidden" name="user_id" id="user_id" value="{{ Auth::user()->id }}">
 
               <div class="form-group row">
                 <label for="title" class="col-sm-2 col-form-label">Title</label>

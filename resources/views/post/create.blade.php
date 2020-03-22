@@ -7,7 +7,7 @@
 @section('bodyClass', 'bg-light')
 
 @section('plugin')
-  <script src="//cdn.ckeditor.com/4.13.1/full/ckeditor.js" defer></script>  
+  <script src="//cdn.ckeditor.com/4.13.1/full/ckeditor.js" defer></script>
 @endsection
 
 @section('pageJS')
@@ -25,7 +25,7 @@
           <div class="card-body">
             <form action="" id="post_submit" method="POST">
               @csrf
-
+                <input type="hidden" name="user_id" id="user_id" value="{{ Auth::user()->id }}">
               <div class="form-group row">
                 <label for="title" class="col-sm-2 col-form-label">Title</label>
                 <div class="col-sm-10">
@@ -49,7 +49,7 @@
                   </select>
                 </div>
               </div>
-              
+
               <div class="form-group row">
                 <div class="col-md-10 offset-md-2">
                   <div class="form-check">
@@ -60,7 +60,7 @@
                   </div>
                 </div>
               </div>
-                
+
               <div class="form-group row">
                 <label for="editor" class="col-sm-2 col-form-label">Content</label>
                 <div class="col-sm-10">

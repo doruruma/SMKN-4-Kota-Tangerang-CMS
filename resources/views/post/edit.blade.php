@@ -7,25 +7,27 @@
 @section('bodyClass', 'bg-light')
 
 @section('plugin')
-  <script src="//cdn.ckeditor.com/4.13.1/full/ckeditor.js" defer></script>  
+  <script src="//cdn.ckeditor.com/4.13.1/full/ckeditor.js" defer></script>
 @endsection
 
 @section('pageJS')
-  <script src="{{ asset('/js/postCreate.js') }}" defer></script>
+  <script src="{{ asset('/js/postEdit.js') }}" defer></script>
 @endsection
 
 @section('content')
   @include('layouts.sidebar')
   @include('layouts.nav')
   <div class="container-fluid mb-5" style="min-height:600px">
-    <h1 class="h3 mb-3 text-gray-800">Edit Post Form</h1>
+    <h1 class="h3 mb-3 text-gray-800">Edit Post</h1>
     <div class="row no-gutters">
       <div class="col-lg-12 col-md-6 col-sm-12 px-1 py-1">
         <div class="card shadow-sm border-light">
           <div class="card-body">
             <form action="" id="post_submit" method="POST">
               @csrf
-
+                <input type="hidden" name="post_id" id="post_id" value="{{ $post->id }}">
+                <input type="hidden" name="user_id" id="user_id" value="{{ Auth::user()->id }}">
+                <input type="hidden" name="category_id" id="category_id" value="{{ $post->category_id }}">
               <div class="form-group row">
                 <label for="title" class="col-sm-2 col-form-label">Title</label>
                 <div class="col-sm-10">
@@ -45,7 +47,7 @@
                 <label for="cat" class="col-sm-2 col-form-label">Category</label>
                 <div class="col-sm-2">
                   <select name="cat" id="cat" class="form-control form-control-sm">
-                    <option value="" selected disabled>Select Category</option>
+
                   </select>
                 </div>
               </div>
@@ -53,14 +55,14 @@
               <div class="form-group row">
                 <div class="col-md-10 offset-md-2">
                   <div class="form-check">
-                    <input class="form-check-input" name="publish" type="checkbox" id="publish">
+                    <input class="form-check-input" name="publish" type="checkbox" id="publish" {{ ($post->published == 1) ? "checked" : "" }}>
                     <label class="form-check-label" for="publish">
                       Publish
                     </label>
                   </div>
                 </div>
               </div>
-                
+
               <div class="form-group row">
                 <label for="editor" class="col-sm-2 col-form-label">Content</label>
                 <div class="col-sm-10">

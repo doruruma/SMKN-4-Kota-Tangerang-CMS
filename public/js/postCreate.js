@@ -19,6 +19,7 @@ $(document).ready(() => {
         content: res.getData(),
         category_id: $("#cat").val(),
         published: $("#publish").is(':checked') ? 1 : 0,
+        user_id: $("#user_id").val(),
         _token: $("input[name='_token']").val()
       },
       success: function (res) {
