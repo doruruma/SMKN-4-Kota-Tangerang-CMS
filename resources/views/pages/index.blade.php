@@ -16,13 +16,23 @@
   <script src="{{ asset('/js/pageIndex.js') }}" defer></script>
 @endsection
 
+@section('script')
+<script>
+  $(document).ready(function () {
+    $('.page').addClass('active')
+    $('.table').DataTable()
+  })
+</script>
+@endsection
+
+
 @section('content')
   @include('layouts.sidebar')
   @include('layouts.nav')
   <div class="container" style="min-height:600px">
     <h1 class="h3 mb-3 text-gray-800">Pages List</h1>
     <div class="row no-gutters">
-      <button class="btn ml-auto mx-1 btn-primary my-2">Add Pages</button>
+      <a href="{{ route('page.new') }}" class="btn ml-auto mx-1 btn-primary my-2">Add Pages</a>
       <div class="col-lg-12 col-md-6 col-sm-12 px-1 py-1">
         <div class="card shadow-sm border-light">
           <div class="card-body">
@@ -47,7 +57,7 @@
                   <td>{{ $page->created_at }}</td>
                   <td>{{ $page->published == 1 ? "Published" : "Draft" }}</td>
                   <td>
-                    <a href="/admin/page/delete/{{ $page->id }}" onclick="return confirm('Remove this page?')">Remove</a> <a href="/admin/page/{{ $page->id }}">Edit</a>
+                    <a href="{{ route('page.delete', ['id' => $page->id]) }}" onclick="return confirm('Remove this page?')">Remove</a> <a href="{{ route('page.edit', ['id' => $page->id]) }}">Edit</a>
                   </td>
                 </tr>
                 @endforeach

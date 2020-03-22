@@ -20,6 +20,7 @@ Route::put('/admin/teacher/update/{id}','TeacherController@update');
 Route::get('/admin/teacher/delete/{id}','TeacherController@delete');
 
 // Dashboard
+Route::get('/landing', 'LandingPage@index');
 Route::get('/', function () {
     return view('dashboard.index');
 })->middleware('auth');
@@ -55,6 +56,6 @@ Route::get('/admin/page/new', 'PageController@new')->name('page.new');
 Route::get('/admin/page/{id}', 'PageController@edit')->name('page.edit');
 
 // Page API
-Route::post('/admin/page', 'PageController@save')->name('post.store');
-Route::put('/admin/page/{id}', 'PageController@put')->name('post.update');
-Route::get('/admin/page/delete/{id}', 'PageController@delete')->name('post.delete');
+Route::post('/admin/page', 'PageController@save')->name('page.store');
+Route::put('/admin/page/{id}', 'PageController@put')->name('page.update');
+Route::get('/admin/page/delete/{id}', 'PageController@delete')->name('page.delete');
