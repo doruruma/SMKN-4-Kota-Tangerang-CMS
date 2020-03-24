@@ -29,7 +29,7 @@ class AuthController extends Controller
             'password' => 'required|string'
         ]);
         if (Auth::attempt(['email' => $req->email, 'password' => $req->password])) {
-            return redirect('/');
+            return redirect('/admin');
         } else {
             return redirect('/login')->with([
                 'title' => 'error',
