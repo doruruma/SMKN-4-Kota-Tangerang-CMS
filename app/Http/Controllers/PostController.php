@@ -4,15 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Post;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
-    private $user;
-
     public function __construct()
     {
         $this->middleware('auth')->except(['save', 'getCategories']);
@@ -71,7 +71,8 @@ class PostController extends Controller
             'title' => 'required|min:3|max:191',
             'content' => 'required|min:5',
             'category_id' => 'required|exists:categories,id',
-            'published' => 'required|in:0,1'
+            'published' => 'required|in:0,1',
+            'file' => 'mimes:png,jpg,jpeg,gif'
         ]);
 
         if ($validated->fails()) {
@@ -82,6 +83,15 @@ class PostController extends Controller
             ], 422);
         }
 
+        if($req->has('file')) {
+            $file = $req->file('file');
+            $gambar = time()."-".Str::slug($file->getClientOriginalName()).".".$file->getClientOriginalExtension();
+
+            $file->storeAs('./file_uploads', $gambar);
+        } else {
+            $gambar = "-";
+        }
+
         try {
             $post = new Post;
             $post->user_id = $req->user_id;
@@ -90,6 +100,7 @@ class PostController extends Controller
             $post->content = $req->content;
             $post->slug = Str::slug($req->title);
             $post->published = $req->published;
+            $post->thumbnail = $gambar;
             $post->save();
         } catch (\Exception $e) {
             // if failed, response to create view with error
@@ -116,12 +127,14 @@ class PostController extends Controller
             'content' => $req->content,
             'category_id' => $req->category_id,
             'published' => $req->published,
+            'file' => $req->file('file')
         ], [
             'id' => 'required|exists:posts,id',
             'title' => 'required|min:3|max:191',
             'content' => 'required|min:5',
             'category_id' => 'required|exists:categories,id',
-            'published' => 'required|in:0,1'
+            'published' => 'required|in:0,1',
+            'file' => 'mimes:png,jpg,jpeg,gif|nullable'
         ]);
 
         if ($validated->fails()) {
@@ -139,6 +152,14 @@ class PostController extends Controller
             $this->checkCredential($post->user_id, function () {
                 return new \Exception("Unauthorized user");
             });
+
+            if($req->has('file')) {
+                File::delete('./post_uploads/'.$post->thumbnail);
+                $file = $req->file('file');
+                $post->thumbail = time()."-".Str::slug($file->getClientOriginalName()).".".$file->getClientOriginalExtension();
+
+                $file->storeAs('./post_uploads', $post->thumbnail);
+            }
 
             $post->user_id = $req->user_id;
             $post->title = $req->title;
@@ -186,6 +207,7 @@ class PostController extends Controller
                 return new \Exception("Unauthorized user");
             });
 
+            File::delete('./storage/app/post_uploads/'.$post->thumbnail);
             $post->delete();
         } catch (\Exception $e) {
             // Internal error, redirect to create view with error

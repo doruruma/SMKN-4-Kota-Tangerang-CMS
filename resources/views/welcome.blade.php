@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>SMKN 4 Kota Tangerang</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Raleway&display=swap" rel="stylesheet">

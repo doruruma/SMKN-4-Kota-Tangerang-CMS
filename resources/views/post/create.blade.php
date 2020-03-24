@@ -50,6 +50,13 @@
                 </div>
               </div>
 
+                <div class="form-group row">
+                    <label for="file" class="col-sm-2 col-form-label">Thumbnail</label>
+                    <div class="col-sm">
+                        <input type="file" name="file" id="file"/>
+                    </div>
+                </div>
+
               <div class="form-group row">
                 <div class="col-md-10 offset-md-2">
                   <div class="form-check">
