@@ -72,7 +72,7 @@ class PostController extends Controller
             'content' => 'required|min:5',
             'category_id' => 'required|exists:categories,id',
             'published' => 'required|in:0,1',
-            'file' => 'mimes:png,jpg,jpeg,gif'
+            'file' => 'required|mimes:png,jpg,jpeg,gif'
         ]);
 
         if ($validated->fails()) {
@@ -84,10 +84,14 @@ class PostController extends Controller
         }
 
         if($req->has('file')) {
-            $file = $req->file('file');
-            $gambar = time()."-".Str::slug($file->getClientOriginalName()).".".$file->getClientOriginalExtension();
+            if($req->file('file') == 'undefined') {
+                $gambar = "-";
+            } else {
+                $file = $req->file('file');
+                $gambar = time()."-".Str::slug($file->getClientOriginalName()).".".$file->getClientOriginalExtension();
 
-            $file->storeAs('./file_uploads', $gambar);
+                $file->move('./thumbnail_posts', $gambar);
+            }
         } else {
             $gambar = "-";
         }
@@ -137,6 +141,8 @@ class PostController extends Controller
             'file' => 'mimes:png,jpg,jpeg,gif|nullable'
         ]);
 
+        // return response()->json($req);
+
         if ($validated->fails()) {
             // if failed, redirect to create view with error
             return response()->json([
@@ -154,11 +160,13 @@ class PostController extends Controller
             });
 
             if($req->has('file')) {
-                File::delete('./post_uploads/'.$post->thumbnail);
-                $file = $req->file('file');
-                $post->thumbail = time()."-".Str::slug($file->getClientOriginalName()).".".$file->getClientOriginalExtension();
+                if($req->file('file') != 'undefined') {
+                    File::delete('thumbnail_posts/'.$post->thumbnail);
+                    $file = $req->file('file');
+                    $post->thumbnail = time()."-".Str::slug($file->getClientOriginalName()).".".$file->getClientOriginalExtension();
 
-                $file->storeAs('./post_uploads', $post->thumbnail);
+                    $file->move('./thumbnail_posts', $post->thumbnail);
+                }
             }
 
             $post->user_id = $req->user_id;
@@ -207,7 +215,7 @@ class PostController extends Controller
                 return new \Exception("Unauthorized user");
             });
 
-            File::delete('./storage/app/post_uploads/'.$post->thumbnail);
+            File::delete('thumbnail_posts/'.$post->thumbnail);
             $post->delete();
         } catch (\Exception $e) {
             // Internal error, redirect to create view with error

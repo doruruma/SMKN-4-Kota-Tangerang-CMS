@@ -15,7 +15,7 @@ $(document).ready(() => {
     data.append('title', $("#title").val())
     data.append('content', res.getData())
     data.append('category_id', $("#cat").val())
-    data.append('published', $("#cat").is(":checked") ? 1 : 0)
+    data.append('published', $("#publish").is(":checked") ? 1 : 0)
     data.append('user_id', $("#user_id").val())
     data.append('file', $("#file")[0].files[0])
     data.append('_token', $("input[name='_token']").val())

@@ -47,7 +47,7 @@ Route::get('/admin/post/{id}', 'PostController@edit')->name('post.edit');
 
 // Post API
 Route::post('/admin/post', 'PostController@save')->name('post.store');
-Route::put('/admin/post/{id}', 'PostController@put')->name('post.update');
+Route::post('/admin/post/{id}', 'PostController@put')->name('post.update');
 Route::get('/admin/post/delete/{id}', 'PostController@delete')->name('post.delete');
 
 // Page view
