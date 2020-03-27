@@ -59,6 +59,11 @@ Route::group(['middleware' => 'auth'], function() {
     Route::put('/admin/page/{id}', 'PageController@put')->name('page.update');
     Route::get('/admin/page/delete/{id}', 'PageController@delete')->name('page.delete');
 
+    // Gallery
+    Route::get('/admin/gallery', 'GalleryController@index');
+    Route::post('/admin/gallery', 'GalleryController@storeImage');
+    Route::delete('/admin/gallery', 'GalleryController@deleteFile');
+
 });
 
 // client side
