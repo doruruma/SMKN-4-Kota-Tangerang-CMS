@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOfficialsTable extends Migration
+class CreatePositionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateOfficialsTable extends Migration
      */
     public function up()
     {
-        Schema::create('officials', function (Blueprint $table) {
+        Schema::create('position', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->unsignedBigInteger('position_id');
-            $table->text('image');
+            $table->string('position');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreateOfficialsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('officials');
+        Schema::dropIfExists('position');
     }
 }

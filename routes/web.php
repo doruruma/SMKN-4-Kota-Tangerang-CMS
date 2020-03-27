@@ -48,3 +48,11 @@ Route::get('/admin/post/{id}', 'PostController@edit');
 Route::post('/admin/post', 'PostController@save');
 Route::put('/admin/post/{id}', 'PostController@put');
 Route::get('/admin/post/delete/{id}', 'PostController@delete');
+
+// Official Route
+Route::get('/admin/official','OfficialController@index')->name('official.index');
+Route::get('/admin/official/add','OfficialController@position_data');
+Route::post('/admin/official/store','OfficialController@store')->name('official.add');
+Route::get('/admin/official/put/{id}','OfficialController@put')->name('official.put');
+Route::post('/admin/official/update/{id}','OfficialController@update')->name('official.update');
+Route::get('/admin/official/delete/{id}', 'OfficialController@delete')->name('official.delete');
