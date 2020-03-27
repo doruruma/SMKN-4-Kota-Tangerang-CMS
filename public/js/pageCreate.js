@@ -21,10 +21,24 @@ $(document).ready(() => {
         _token: $("input[name='_token']").val()
       },
       success: function (res) {
-        console.log(res)
+        Swal.fire({
+            icon: 'success',
+            title: 'Your work has been saved',
+            showConfirmButton: false,
+            timer: 1500
+          })
+
+          setTimeout(() => {
+            window.location.href="/admin/posts"
+        }, 2000)
       },
       error: function (rej) {
-        console.log(rej)
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            showConfirmButton: false,
+            timer: 1500
+          })
       }
     })
   })

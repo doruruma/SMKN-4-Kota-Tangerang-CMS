@@ -12,10 +12,10 @@
 
         <script src="{{ asset('/vendor/jquery/jquery.min.js') }}"></script>
         <script src="{{ asset('/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-        <script src="{{ asset('/vendor/js/landingPage.js') }}"></script>
         <style>
             p {
-                font-family: 'Raleway', sans-serif !important;
+                font-family: 'Montserrat', sans-serif !important;
+
             }
 
             .nav-link {
@@ -33,9 +33,32 @@
                 font-weight: 700;
                 font-size:0.92rem;
             }
+
+            .bold {
+                font-family: 'Montserrat', 'Raleway', sans-serif;
+                font-weight: 700;
+            }
+
+            .top-right {
+                position: absolute;
+                top: 5;
+                right: 5;
+            }
+
+            .isi {
+                content:"";
+                display:block;
+                position:absolute;
+                bottom:0;
+                left:0;
+                right:0;
+                background: rgba(0, 0, 0, 0.8);
+            }
+
+
         </style>
     </head>
-    <body>
+    <body style="background-color:hsl(222, 3, 99)">
         @include('templates.navbar')
         @yield('content')
         @include('templates.footer')

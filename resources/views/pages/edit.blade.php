@@ -35,11 +35,21 @@
                     _token: $("input[name='_token']").val(),
                     _method: "PUT"
                 },
-                success: function(res) {
-                    console.log(res)
+                success: function (res) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Your work has been saved',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                 },
-                error: function(rej) {
-                    console.log(rej)
+                error: function (rej) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                 }
             })
         })
@@ -59,6 +69,7 @@
 @section('content')
   @include('layouts.sidebar')
   @include('layouts.nav')
+
   <div class="container-fluid mb-5" style="min-height:600px">
     <h1 class="h3 mb-3 text-gray-800">Edit Page Form</h1>
     <div class="row no-gutters">
@@ -103,8 +114,10 @@
                 </div>
               </div>
 
-              <div class="form-group">
-                <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+              <div class="form-group row">
+                    <div class="offset-md-2 col row">
+                        <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+                    </div>
               </div>
 
             </form>

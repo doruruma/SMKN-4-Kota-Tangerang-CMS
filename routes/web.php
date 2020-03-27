@@ -11,9 +11,6 @@
 |
 */
 
-// Dashboard
-Route::get('/landing', 'LandingPage@index');
-
 // Auth Route
 Route::get('/login', 'AuthController@login')->name('login');
 Route::post('/login', 'AuthController@postLogin');
@@ -63,3 +60,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/admin/page/delete/{id}', 'PageController@delete')->name('page.delete');
 
 });
+
+// client side
+Route::get('/', 'LandingPage@index');
+Route::get('/{slug_page}', 'LandingPage@page');

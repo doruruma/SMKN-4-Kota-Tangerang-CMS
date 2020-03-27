@@ -26,5 +26,10 @@ class CategorySeeder extends Seeder
         $cat->category = "Prestasi";
         $cat->slug = "prestasi";
         $cat->save();
+
+        $cat = new Category;
+        $cat->category = "Events";
+        $cat->slug = "events";
+        $cat->save();
     }
 }

@@ -4,6 +4,34 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        .loading-sm {
+            width:20px;
+            height:20px;
+            border-radius: 50%;
+            background-color: none;
+            animation: infinite 1s loading-s;
+            border-top:3px solid lightgray;
+        }
+
+        @keyframes loading-s {
+            0% {
+                opacity: 0%;
+                transform:rotate(0deg);
+            }
+
+            50% {
+                opacity: 100%;
+            }
+
+            100% {
+                opacity: 0%;
+                transform:rotate(360deg);
+            }
+        }
+    </style>
+
     <!-- CSRF Token -->
       <meta name="csrf-token" content="{{ csrf_token() }}">
       <title>@yield('title')</title>
