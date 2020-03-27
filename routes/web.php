@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/admin/gallery', 'GalleryController@index');
+Route::post('/admin/gallery', 'GalleryController@storeImage');
+Route::delete('/admin/gallery', 'GalleryController@deleteFile');
