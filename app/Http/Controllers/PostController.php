@@ -160,7 +160,7 @@ class PostController extends Controller
             });
 
             if($req->has('file')) {
-                if($req->file('file') != 'undefined') {
+                if($req->file('file')) {
                     File::delete('thumbnail_posts/'.$post->thumbnail);
                     $file = $req->file('file');
                     $post->thumbnail = time()."-".Str::slug($file->getClientOriginalName()).".".$file->getClientOriginalExtension();

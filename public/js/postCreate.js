@@ -28,16 +28,23 @@ $(document).ready(() => {
       cache: false,
       data: data,
       success: function (res) {
-        console.log(res)
         Swal.fire({
-          title: "SUCCESS",
-          text: "Data Inserted Successfully",
-          icon: "success"
-        })
-        document.location.href = '/admin/posts'
+            icon: 'success',
+            title: 'Your work has been saved',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          setTimeout(() => {
+              window.location.href="/admin/posts"
+          }, 2000)
       },
       error: function (rej) {
-        console.log(rej)
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            showConfirmButton: false,
+            timer: 1500
+          })
       }
     })
   })
