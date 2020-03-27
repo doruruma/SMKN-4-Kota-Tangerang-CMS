@@ -67,6 +67,20 @@
         </div>
       </li>
 
+      <!-- Nav Item - Gallery Collapse Menu -->
+      <li class="nav-item galleries">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseGallery" aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-fw fa-wsrench"></i>
+          <span>Gallery</span>
+        </a>
+        <div id="collapseGallery" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner">
+            <a class="collapse-item" href="{{ route('gallery.index') }}"><i class="fas fa-fw fa-folder text-primary mx-1"></i> Gallery Data</a>
+            <a class="collapse-item" href="utilities-border.html"><i class="fas fa-fw fa-plus text-primary mx-1"></i> Add Gallery</a>
+          </div>
+        </div>
+      </li>
+
       <!-- Heading -->
       <div class="sidebar-heading mt-3">
         School Admin

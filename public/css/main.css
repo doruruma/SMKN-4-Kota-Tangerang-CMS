@@ -23,11 +23,14 @@ small{
 }
 /*  */
 
-/* Public */
+/* Component */
 .card{
   border-radius: 0 !important;
 }
 .btn{
   border-radius: 3px !important;
+}
+.btn-radius{
+  border-radius: 20px !important;
 }
 /*  */

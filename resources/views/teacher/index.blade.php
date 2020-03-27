@@ -27,7 +27,7 @@
   <div class="container mb-5" style="min-height:600px">
     <h1 class="h3 mb-3 text-gray-800">Teacher List</h1>
     <div class="row no-gutters">
-      <a href="{{ url('/admin/teacher/new') }}" class="btn btn-sm ml-auto mx-1 btn-primary my-2">Add Teacher</a>
+      <a href="{{ route('teacher.add') }}" class="btn btn-sm ml-auto mx-1 btn-primary my-2">Add Teacher</a>
       <div class="col-lg-12 col-md-6 col-sm-12 px-1 py-1">
         <div class="card shadow-sm border-light">
           <div class="card-body">
