@@ -27,7 +27,7 @@ class LandingPage extends Controller
     {
         $pages = Page::where('published', 1)->get();
         $page = Page::where('slug', $page_slug)->where('published', 1)->get();
-        if(count($page) != 1) {
+        if (count($page) != 1) {
             return abort(404);
         } else {
             return view('page', [
@@ -35,5 +35,19 @@ class LandingPage extends Controller
                 'pages' => $pages
             ]);
         }
+    }
+
+    public function post()
+    {
+        $pages = Page::where('published', 1)->get();
+
+        $news = Post::where('published', 1)->where('category_id', 1)->orderBy('created_at', 'desc')->limit(3)->get();
+        $events = Post::where('published', 1)->where('category_id', 4)->orderBy('created_at', 'desc')->limit(4)->get();
+
+        return view('landing_sections.post', [
+            'pages' => $pages,
+            'news' => $news,
+            'events' => $events
+        ]);
     }
 }

@@ -15,18 +15,18 @@
 Route::get('/login', 'AuthController@login')->name('login');
 Route::post('/login', 'AuthController@postLogin');
 
-Route::group(['middleware' => 'auth'], function() {
+Route::group(['middleware' => 'auth'], function () {
 
     Route::view('/admin', 'dashboard.index');
     Route::get('/logout', 'AuthController@logout')->name('logout');
 
     // Teacher Route
-    Route::get('/admin/teacher','TeacherController@teacher')->name('teacher.index');
-    Route::get('/admin/teacher/add','TeacherController@add')->name('teacher.add');
-    Route::post('/admin/teacher/store','TeacherController@store')->name('teacher.store');
-    Route::get('/admin/teacher/edit/{id}','TeacherController@put');
-    Route::put('/admin/teacher/update/{id}','TeacherController@update');
-    Route::get('/admin/teacher/delete/{id}','TeacherController@delete');
+    Route::get('/admin/teacher', 'TeacherController@teacher')->name('teacher.index');
+    Route::get('/admin/teacher/add', 'TeacherController@add')->name('teacher.add');
+    Route::post('/admin/teacher/store', 'TeacherController@store')->name('teacher.store');
+    Route::get('/admin/teacher/edit/{id}', 'TeacherController@put');
+    Route::put('/admin/teacher/update/{id}', 'TeacherController@update');
+    Route::get('/admin/teacher/delete/{id}', 'TeacherController@delete');
 
 
     // Profile Route
@@ -63,9 +63,9 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/admin/gallery', 'GalleryController@index');
     Route::post('/admin/gallery', 'GalleryController@storeImage');
     Route::delete('/admin/gallery', 'GalleryController@deleteFile');
-
 });
 
 // client side
 Route::get('/', 'LandingPage@index');
+Route::get('/post_category/post_slug', 'LandingPage@post');
 Route::get('/{slug_page}', 'LandingPage@page');
