@@ -4,7 +4,7 @@
     <div class="container mt-5 mb-5">
         <div class="row">
             <div class="col-sm-8">
-                <div class="card border-0 shadow-sm py-5 px-5 mb-2">
+                <div class="card border-0 shadow-lg py-5 px-5 mb-2">
                     <h5 class="font-weight-bold">Jelang Pengumuman Kelulusan. SMKN 4 tumben ga tawuran</h5>
                     <small class="text-muted d-block mb-2">Posted by Admin SMKN 4</small>
                     <img src="{{ asset('/img/lomba.jpeg') }}" alt="" class="img-fluid d-block mb-3"  style="max-width: 550px; max-height:300px;">
@@ -14,7 +14,7 @@
                 </div>
             </div>
             <div class="col-sm-4">
-                <div class="card border-0 shadow-sm py-5 px-5">
+                <div class="card border-0 shadow-lg py-5 px-5">
                     <h5 class="font-weight-bold">Recent Articles</h5>
                 <div class="row mb-3">
                     <div class="col-sm-5">

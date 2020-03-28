@@ -33,23 +33,28 @@
                   <th>No</th>
                   <th>Name</th>
                   <th>Image</th>
-                  <th>Description</th>
                   <th>Action</th>
                 </tr>
               </thead>
 
               <tbody>
+                @php
+                    $no = 0;
+                @endphp
                 @foreach ($major as $item)
+                @php
+                    $no++
+                @endphp
                 <tr>
+                  <td>{{$no}}</td>
                   <td>{{$item->name}}</td>
-                  <td><img src="{{asset('majors/'.$item->image)}}" alt=""></td>
-                  <td>{{$item->description}}</td>
+                  <td><img src="{{asset('majors/'.$item->image)}}" alt="" class="img-fluid" style="height: 20vh"></td>
                   <td>
                     <form action="{{route('major.destroy', $item->id)}}" method="post">
                       @csrf
                       @method('DELETE')
-                      <a href="{{route('major.edit', $item->id)}}">Edit</a>
-                      <button type="submit">Hapus</button>
+                      <a href="{{route('major.edit', $item->id)}}" class="btn btn-info">Edit</a>
+                      <button type="submit" class="btn btn-danger">Hapus</button>
                     </form>
                   </td>
                 </tr>
