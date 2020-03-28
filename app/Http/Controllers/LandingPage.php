@@ -52,7 +52,9 @@ class LandingPage extends Controller
         return view('landing_sections.post', [
             'pages' => $pages,
             'news' => $news,
-            'events' => $events
+            'events' => $events,
+            'categories' => Category::get(),
+            'majors' => Major::get()
         ]);
     }
 }
