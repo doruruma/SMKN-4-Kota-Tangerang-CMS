@@ -9,18 +9,14 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
-            <li class="nav-item ml-3">
-                <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item ml-3">
-                <a class="nav-link" href="#">News</a>
-            </li>
-            <li class="nav-item ml-3">
-                <a class="nav-link" href="#">Prestasi</a>
-            </li>
-            <li class="nav-item ml-3">
-                <a class="nav-link" href="#">Articles</a>
-            </li>
+                <li class="nav-item ml-3">
+                    <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                @foreach($categories as $category)
+                    <li class="nav-item ml-3">
+                        <a href="/{{ $category->slug }}" class="nav-link">{{ $category->category }}</a>
+                    </li>
+                @endforeach
             </ul>
         </div>
     </div>
