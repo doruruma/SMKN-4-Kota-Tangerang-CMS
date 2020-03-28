@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Category;
+use App\Major;
 use App\Page;
 use App\Post;
 
@@ -19,7 +21,9 @@ class LandingPage extends Controller
         return view('landing_sections.home', [
             'pages' => $pages,
             'news' => $news,
-            'events' => $events
+            'events' => $events,
+            'categories' => Category::get(),
+            'majors' => Major::get()
         ]);
     }
 
@@ -32,7 +36,8 @@ class LandingPage extends Controller
         } else {
             return view('page', [
                 'page' => $page[0],
-                'pages' => $pages
+                'pages' => $pages,
+                'categories' => Category::get()
             ]);
         }
     }
