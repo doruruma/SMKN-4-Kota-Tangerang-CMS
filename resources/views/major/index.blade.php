@@ -39,8 +39,10 @@
               </thead>
 
               <tbody>
+                @php $i = 1 @endphp
                 @foreach ($major as $item)
                 <tr>
+                  <td>{{ $i }}</td>
                   <td>{{$item->name}}</td>
                   <td><img src="{{asset('majors/'.$item->image)}}" alt=""></td>
                   <td>{{$item->description}}</td>
@@ -48,11 +50,12 @@
                     <form action="{{route('major.destroy', $item->id)}}" method="post">
                       @csrf
                       @method('DELETE')
-                      <a href="{{route('major.edit', $item->id)}}">Edit</a>
-                      <button type="submit">Hapus</button>
+                      <a href="{{route('major.edit', $item->id)}}" class="btn btn-sm btn-primary"><i class="fas fa-pen"></i></a>
+                      <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
                     </form>
                   </td>
                 </tr>
+                @php $i++ @endphp
                 @endforeach
               </tbody>
 

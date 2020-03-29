@@ -36,7 +36,7 @@
             @csrf
             <input type="hidden" name="image" value="{{ $m->slug }}">
           </form>
-          <button type="button" onclick="document.getElementById('f-m{{ $m->id }}').submit()" class="btn btn-danger btn-sm"><i class="fas fa-fw fa-trash"></i></button>
+          <button type="button" onclick="document.getElementById('f-m{{ $m->id }}').submit()" class="btn btnDelete btn-danger btn-sm"><i class="fas fa-fw fa-trash"></i></button>
         </div>
       @endforeach
     </div>
