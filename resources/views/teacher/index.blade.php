@@ -43,14 +43,14 @@
               </thead>
 
               <tbody>
-                @php $no = 0; @endphp
+                @php $no = 1; @endphp
                 @foreach ($teacher as $teachers)
                 <tr>
                   <td>{{$no++}}</td>
                   <td>{{$teachers->name}}</td>
                   <td>{{$teachers->subject}}</td>
                   <td>
-                    <a href="/admin/teacher/delete/{{ $post->id }}" onclick="return confirm('Remove this post?')">Remove</a> <a href="/admin/teacher/{{ $post->id }}">Edit</a>
+                    <a href="/admin/teacher/delete/{{ $teachers->id }}" onclick="return confirm('Remove this post?')">Remove</a> <a href="/admin/teacher/edit/{{ $teachers->id }}">Edit</a>
                   </td>
                 </tr>
                 @endforeach
