@@ -38,26 +38,25 @@
               </thead>
 
               <tbody>
-                @php
-                    $no = 0;
-                @endphp
+                @php $i = 1 @endphp
                 @foreach ($major as $item)
                 @php
                     $no++
                 @endphp
                 <tr>
-                  <td>{{$no}}</td>
+                  <td>{{ $i }}</td>
                   <td>{{$item->name}}</td>
                   <td><img src="{{asset('majors/'.$item->image)}}" alt="" class="img-fluid" style="height: 20vh"></td>
                   <td>
                     <form action="{{route('major.destroy', $item->id)}}" method="post">
                       @csrf
                       @method('DELETE')
-                      <a href="{{route('major.edit', $item->id)}}" class="btn btn-info">Edit</a>
-                      <button type="submit" class="btn btn-danger">Hapus</button>
+                      <a href="{{route('major.edit', $item->id)}}" class="btn btn-sm btn-primary"><i class="fas fa-pen"></i></a>
+                      <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
                     </form>
                   </td>
                 </tr>
+                @php $i++ @endphp
                 @endforeach
               </tbody>
 
