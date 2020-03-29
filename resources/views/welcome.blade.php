@@ -64,7 +64,7 @@
             }
         </style>
     </head>
-    <body style="background-color:hsl(222, 3, 99)">
+    <body class="bg-light">
         @include('templates.navbar')
         @yield('content')
         @include('templates.footer')

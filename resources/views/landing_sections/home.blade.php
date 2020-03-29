@@ -81,7 +81,7 @@
                         @php $counter = 0; @endphp
                         @foreach($majors as $major)
                             <div class="carousel-item {{ !$counter++ ? "active" : "" }}">
-                                <div class="card shadow-sm border-0 bg-light">
+                                <div class="card shadow-sm border-0">
                                     <div class="card-body p-0">
                                         <div class="row">
                                             <div class="col-lg-4 col-md-12 col-sm-12">
