@@ -22,7 +22,7 @@ Route::group(['middleware' => 'auth'], function() {
 
     // Teacher Route
     Route::get('/admin/teacher','TeacherController@teacher')->name('teacher.index');
-    Route::get('/admin/teacher/add','TeacherController@add')->name('teacher.add');
+    Route::get('/admin/teacher/new','TeacherController@new')->name('teacher.create');
     Route::post('/admin/teacher/store','TeacherController@store')->name('teacher.store');
     Route::get('/admin/teacher/edit/{id}','TeacherController@put')->name('teacher.edit');
     Route::put('/admin/teacher/{id}','TeacherController@update')->name('teacher.update');

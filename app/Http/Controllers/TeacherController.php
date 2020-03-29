@@ -20,7 +20,7 @@ class TeacherController extends Controller
         ]);
     }
 
-    public function add()
+    public function new()
     {
         return view('teacher.create');
     }
