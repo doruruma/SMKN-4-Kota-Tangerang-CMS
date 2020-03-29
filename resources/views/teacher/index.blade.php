@@ -15,8 +15,22 @@
 @section('script')
   <script>
     $(document).ready(function() {
+
       $('.teacher').addClass('active')
       $('.table').DataTable()
+
+      $('.btnDelete').click(function(e){
+        e.preventDefault()
+        Swal.fire({
+          title: 'Konfirmasi Hapus',
+          text: 'Yakin Hapus Guru',
+          icon: 'warning',
+          showCancelButton: true
+        }).then((res) => {
+          res.value ? $(this).parent().submit() : false
+        })
+      })
+
     })
   </script>
 @endsection
@@ -38,21 +52,27 @@
                   <th>No</th>
                   <th>Name</th>
                   <th>Subject</th>
-                  <th>Action</th>
+                  <th class="text-center">Action</th>
                 </tr>
               </thead>
 
               <tbody>
-                @php $no = 0; @endphp
+                @php $no = 1; @endphp
                 @foreach ($teacher as $teachers)
                 <tr>
-                  <td>{{$no++}}</td>
-                  <td>{{$teachers->name}}</td>
-                  <td>{{$teachers->subject}}</td>
-                  <td>
-                    <a href="/admin/teacher/delete/{{ $post->id }}" onclick="return confirm('Remove this post?')">Remove</a> <a href="/admin/teacher/{{ $post->id }}">Edit</a>
+                  <td>{{ $no }}</td>
+                  <td>{{ $teachers->name }}</td>
+                  <td>{{ $teachers->subject }}</td>
+                  <td class="text-center">
+                    <a class="btn btn-sm btn-primary" href="{{ route('teacher.edit', $teachers->id) }}"><i class="fas fa-pen"></i></a>
+                    <form action="{{ route('teacher.delete', $teachers->id) }}" method="POST" class="d-inline formDelete">
+                      @csrf
+                      @method('DELETE')
+                      <button class="btnDelete btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                    </form>
                   </td>
                 </tr>
+                @php $no++ @endphp
                 @endforeach
               </tbody>
 

@@ -13,10 +13,10 @@ class TeacherController extends Controller
     {
         $teacher = Teacher::all();
 
-        return view('teacher.index',[
+        return view('teacher.index', [
             'teacher' => $teacher,
             'title' => 'Teacher|index'
-            
+
         ]);
     }
 
@@ -36,14 +36,14 @@ class TeacherController extends Controller
 
         //pharse/put file to variable 
         $file = $request->file('img');
-            
+
         //put name of image 
-        $name_img = time().$request->file('img')->getClientOriginalName();
+        $name_img = time() . $request->file('img')->getClientOriginalName();
 
         //set folder location
         $location = 'teachers';
 
-        try{
+        try {
 
             //add teacher data to database
             Teacher::create([
@@ -51,17 +51,14 @@ class TeacherController extends Controller
                 'subject' => $request->subject,
                 'image' => $name_img
             ]);
-            
-            //move file
-            $file->move($location,$name_img);
 
+            //move file
+            $file->move($location, $name_img);
+        } catch (\Exception $ex) {
+            echo ("Input Failed ! Please Try again");
+            return redirect(route('teacher.index'));
         }
-        catch(\Exception $ex)
-        {
-            echo("Input Failed ! Please Try again");
-            return redirect('/teacher');
-        }
-        return redirect('/teacher');
+        return redirect(route('teacher.index'));
     }
 
     public function put($id)
@@ -73,65 +70,57 @@ class TeacherController extends Controller
 
     public function update(Request $request, $id)
     {
-
         //validate data on textfield
         $request->validate([
             'name' => 'required',
             'subject' => 'required',
-            'img' => 'required|file|image|mimes:jpeg,jpg,png|max:6048'
+            'img' => 'file|image|mimes:jpeg,jpg,png|max:6048'
         ]);
-        
-        //pharse/put file to variable 
-        $file = $request->file('img');
-            
-
-        //put name of image 
-        $name_img = time().$request->file('img')->getClientOriginalName();
-
-        //set folder location
-        $location = 'teachers';
-
-        //get image teacher by id
-        $image = Teacher::where('id',$id)->first();
 
         try {
             $teacher = Teacher::find($id);
             $teacher->name = $request->name;
             $teacher->subject = $request->subject;
-            $teacher->image = $name_img;
+
+            //pharse/put file to variable 
+            $file = $request->file('img');
+            if ($file) {
+                //put name of image 
+                $name_img = time() . $request->file('img')->getClientOriginalName();
+
+                // set img to database
+                $teacher->image = $name_img;
+
+                //set folder location
+                $location = 'teachers';
+
+                //get image teacher by id
+                $image = Teacher::where('id', $id)->first();
+
+                //Delete image at image (teachers) dir.
+                file::delete('teachers/' . $image->image);
+
+                //move file
+                $file->move($location, $name_img);
+            }
             $teacher->save();
-
-            //Delete image at image (teachers) dir.
-            file::delete('teachers/'.$image->image);
-
-            //move file
-            $file->move($location,$name_img);
-
-            return redirect('/teacher');
-
-
+            return redirect(route('teacher.index'))->with('success', 'Berhasil Update Data');
+        } catch (\Exception $ex) {
+            echo ("Update Data Failed ! Please Try Again");
+            return redirect(route('teacher.edit', $request->id));
         }
-        catch (\Exception $ex)
-        {
-            echo("Update Data Failed ! Please Try Again");
-            return redirect('/teacher/edit/'.$request->id);
-        }
-            
     }
 
     public function delete($id)
     {
         //delete image 
-        $image = Teacher::where('id',$id)->first();
-        file::delete('teachers/'.$image->image);
+        $image = Teacher::where('id', $id)->first();
+        file::delete('teachers/' . $image->image);
 
         //delete data 
-        $teacher = Teacher::find($id);
+        $teacher = Teacher::findOrFail($id);
         $teacher->delete();
-        
 
-        return redirect('/teacher');
+        return redirect(route('teacher.index'))->with('success', 'Data Berhasil Dihapus');
     }
-    
-    
 }
