@@ -60,9 +60,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/page/delete/{id}', 'PageController@delete')->name('page.delete');
 
     // Gallery
-    Route::get('/admin/gallery', 'GalleryController@index');
-    Route::post('/admin/gallery', 'GalleryController@storeImage');
-    Route::delete('/admin/gallery', 'GalleryController@deleteFile');
+    Route::get('/admin/gallery', 'GalleryController@index')->name('gallery.index');
+    Route::post('/admin/gallery', 'GalleryController@storeImage')->name('gallery.store');
+    Route::delete('/admin/gallery', 'GalleryController@deleteFile')->name('gallery.delete');
 
     // Official Route
     Route::get('/admin/official','OfficialController@index')->name('official.index');
