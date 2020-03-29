@@ -42,19 +42,23 @@ class LandingPage extends Controller
         }
     }
 
-    public function post()
+    public function post($post_category, $post_slug)
     {
         $pages = Page::where('published', 1)->get();
 
-        $news = Post::where('published', 1)->where('category_id', 1)->orderBy('created_at', 'desc')->limit(3)->get();
-        $events = Post::where('published', 1)->where('category_id', 4)->orderBy('created_at', 'desc')->limit(4)->get();
+        $post = Post::where('slug', $post_slug)->get()->first();
+
+        if(!$post) {
+            return abort(404);
+        }
+
+        $category = $post->category;
 
         return view('landing_sections.post', [
+            'post' => $post,
             'pages' => $pages,
-            'news' => $news,
-            'events' => $events,
             'categories' => Category::get(),
-            'majors' => Major::get()
+            'category' => $category
         ]);
     }
 }

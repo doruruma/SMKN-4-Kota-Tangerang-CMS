@@ -75,5 +75,5 @@ Route::group(['middleware' => 'auth'], function () {
 
 // client side
 Route::get('/', 'LandingPage@index');
-Route::get('/post_category/post_slug', 'LandingPage@post');
+Route::get('/{post_category}/{post_slug}', 'LandingPage@post');
 Route::get('/{slug_page}', 'LandingPage@page');

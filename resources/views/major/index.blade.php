@@ -41,7 +41,7 @@
                 @php $i = 1 @endphp
                 @foreach ($major as $item)
                 @php
-                    $no++
+                    $i++
                 @endphp
                 <tr>
                   <td>{{ $i }}</td>
