@@ -47,7 +47,7 @@ Route::group(['middleware' => 'auth'], function () {
     // Post API
     Route::post('/admin/post', 'PostController@save')->name('post.store');
     Route::post('/admin/post/{id}', 'PostController@put')->name('post.update');
-    Route::get('/admin/post/delete/{id}', 'PostController@delete')->name('post.delete');
+    Route::delete('/admin/post/{id}', 'PostController@delete')->name('post.delete');
 
     // Page view
     Route::get('/admin/pages', 'PageController@get')->name('page.index');

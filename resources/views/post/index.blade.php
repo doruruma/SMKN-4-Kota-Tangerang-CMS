@@ -15,8 +15,22 @@
 @section('script')
 <script>
   $(document).ready(function () {
+
     $('.post').addClass('active')
     $('.table').DataTable()
+
+    $('.btnDelete').click(function (e) {
+      e.preventDefault()
+      Swal.fire({
+        title: 'Konfirmasi Hapus',
+        text: 'Yakin Hapus Post?',
+        icon: 'warning',
+        showCancelButton: true
+      }).then((res) => {
+        res.value ? $(this).parent().submit() : false
+      })
+    })
+
   })
 </script>
 @endsection
@@ -40,7 +54,7 @@
                   <th>Category</th>
                   <th>Date</th>
                   <th>Status</th>
-                  <th>Action</th>
+                  <th class="text-center">Action</th>
                 </tr>
               </thead>
 
@@ -53,8 +67,12 @@
                   <td>{{ $post->category->category }}</td>
                   <td>{{ $post->created_at }}</td>
                   <td>{{ $post->published == 1 ? "Published" : "Draft" }}</td>
-                  <td>
-                    <a href="/admin/post/delete/{{ $post->id }}" onclick="return confirm('Remove this post?')">Remove</a> <a href="/admin/post/{{ $post->id }}">Edit</a>
+                  <td class="text-center">
+                    <a href="{{ route('post.edit', $post->id) }}" class="btn btn-sm"><i class="fas fa-pen text-info"></i></button>
+                    <form action="{{ route('post.delete', $post->id) }}" method="POST" class="d-inline">
+                      @csrf @method('DELETE')
+                      <button class="btn btn-sm btnDelete"><i class="fas fa-trash text-danger"></i></button>
+                    </form>
                   </td>
                 </tr>
                 @endforeach

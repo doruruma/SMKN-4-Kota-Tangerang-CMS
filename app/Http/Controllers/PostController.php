@@ -204,7 +204,7 @@ class PostController extends Controller
 
         if ($validated->fails()) {
             // if failed, redirect to create view with error
-            return redirect('/admin/posts');
+            return redirect(route('post.index'));
         }
 
         try {
@@ -219,10 +219,10 @@ class PostController extends Controller
             $post->delete();
         } catch (\Exception $e) {
             // Internal error, redirect to create view with error
-            return redirect('/admin/posts');
+            return redirect(route('post.index'));
         }
 
         // redirect if success
-        return redirect('/admin/posts');
+        return redirect(route('post.index'));
     }
 }

@@ -14,7 +14,7 @@ $(document).ready(() => {
       url: "/admin/page",
       method: "POST",
       data: {
-          user_id: $("#user_id").val(),
+        user_id: $("#user_id").val(),
         title: $("#title").val(),
         content: res.getData(),
         published: $("#publish").is(':checked') ? 1 : 0,
@@ -22,23 +22,28 @@ $(document).ready(() => {
       },
       success: function (res) {
         Swal.fire({
-            icon: 'success',
-            title: 'Your work has been saved',
-            showConfirmButton: false,
-            timer: 1500
-          })
+          icon: 'success',
+          title: 'Your work has been saved',
+          showConfirmButton: false,
+          timer: 1500
+        })
 
-          setTimeout(() => {
-            window.location.href="/admin/posts"
+        setTimeout(() => {
+          window.location.href = "/admin/page"
         }, 2000)
       },
-      error: function (rej) {
-        Swal.fire({
+      error: function (res) {
+        if (res.status == 422) {
+          $('.title').html(res.responseJSON[0].title)
+          $('.content').html(res.responseJSON[0].content)
+        } else {
+          Swal.fire({
             icon: 'error',
             title: 'Error',
             showConfirmButton: false,
             timer: 1500
           })
+        }
       }
     })
   })

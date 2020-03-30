@@ -14,6 +14,19 @@
   <script src="{{ asset('/js/postCreate.js') }}" defer></script>
 @endsection
 
+@section('script')
+  <script>
+    $(document).ready(function(){
+
+      $('.post').addClass('active')
+      $('#file').change(function(){
+        $('.img-thumbnail').attr('src', window.URL.createObjectURL(this.files[0]))
+      })
+
+    })
+  </script>
+@endsection
+
 @section('content')
   @include('layouts.sidebar')
   @include('layouts.nav')
@@ -30,14 +43,14 @@
                 <label for="title" class="col-sm-2 col-form-label">Title</label>
                 <div class="col-sm-10">
                   <input type="text" name="title" id="title" class="form-control form-control-sm">
-                  <small class="text-danger">{{ $errors->first('title') }}</small>
+                  <small class="text-danger title"></small>
                 </div>
               </div>
 
               <div class="form-group row">
                 <label for="slug_preview" class="col-sm-2 col-form-label">Slug Preview</label>
                 <div class="col-sm-10">
-                  <input type="text" name="slug_preview" id="slug_preview" class="form-control form-control-sm">
+                  <input type="text" name="slug_preview" id="slug_preview" class="form-control form-control-sm" readonly>
                 </div>
               </div>
 
@@ -50,12 +63,19 @@
                 </div>
               </div>
 
-                <div class="form-group row">
-                    <label for="file" class="col-sm-2 col-form-label">Thumbnail</label>
-                    <div class="col-sm">
-                        <input type="file" name="file" id="file"/>
-                    </div>
+              <div class="form-group row">
+                <div class="col-3 offset-2">
+                  <img src="{{ asset('img/default_profile.png') }}" class="img-thumbnail" style="">
                 </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="file" class="col-sm-2 col-form-label">Thumbnail</label>
+                <div class="col-sm">
+                    <input type="file" name="file" id="file" class="d-block"/>
+                    <small class="text-danger file"></small>
+                </div>
+              </div>
 
               <div class="form-group row">
                 <div class="col-md-10 offset-md-2">
@@ -72,6 +92,7 @@
                 <label for="editor" class="col-sm-2 col-form-label">Content</label>
                 <div class="col-sm-10">
                   <textarea name="editor" id="editor"></textarea>
+                  <small class="text-danger content"></small>
                 </div>
               </div>
 
