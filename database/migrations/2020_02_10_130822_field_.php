@@ -25,6 +25,10 @@ class Field extends Migration
         Schema::table('pages', function(Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
+
+        Schema::table('officials', function(Blueprint $table){
+            $table->foreign('position_id')->references('id')->on('position')->onDelete('cascade')->onUpdate('cascade');
+        });
     }
 
     /**

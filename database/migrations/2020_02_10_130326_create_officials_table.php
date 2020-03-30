@@ -16,7 +16,7 @@ class CreateOfficialsTable extends Migration
         Schema::create('officials', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->enum('position', ['0','1','2','3']);
+            $table->unsignedBigInteger('position_id');
             $table->text('image');
             $table->timestamps();
         });
