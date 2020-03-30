@@ -12,7 +12,7 @@
                             @foreach($news as $new):
 
                                 <div class="carousel-item {{ !$counter ? "active" : "" }}" style="max-width:100%;">
-                                    <img src="{{ URL::to('/thumbnail_posts/'.$new->thumbnail) }}" class="d-block w-100" style=" max-height:400px">
+                                    <img src="{{ URL::to('/thumbnail_posts/'.$new->thumbnail) }}" class="d-block w-100" style="max-height:400px;min-height:400px;">
                                     <div class="isi">
                                         <div class="row" style="height:50px;">
                                             <div class="col my-auto ml-3">
