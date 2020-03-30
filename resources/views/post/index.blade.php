@@ -41,7 +41,7 @@
   <div class="container mb-5" style="min-height:600px">
     <h1 class="h3 mb-3 text-gray-800">Post List</h1>
     <div class="row no-gutters">
-      <a href="{{ url('/admin/post/new') }}" class="btn btn-sm ml-auto mx-1 btn-primary my-2">Add Posts</a>
+      <a href="{{ route('post.create') }}" class="btn btn-sm ml-auto mx-1 btn-primary my-2">Add Posts</a>
       <div class="col-lg-12 col-md-6 col-sm-12 px-1 py-1">
         <div class="card shadow-sm border-light">
           <div class="card-body">
@@ -68,10 +68,10 @@
                   <td>{{ $post->created_at }}</td>
                   <td>{{ $post->published == 1 ? "Published" : "Draft" }}</td>
                   <td class="text-center">
-                    <a href="{{ route('post.edit', $post->id) }}" class="btn btn-sm"><i class="fas fa-pen text-info"></i></button>
-                    <form action="{{ route('post.delete', $post->id) }}" method="POST" class="d-inline">
+                    <a href="{{ route('post.edit', $post->id) }}" class="btn btn-light btn-sm py-1"><i class="fas fa-pen text-info"></i></a>
+                    <form action="{{ route('post.delete', $post->id) }}" method="POST" class="d-inline py-1">
                       @csrf @method('DELETE')
-                      <button class="btn btn-sm btnDelete"><i class="fas fa-trash text-danger"></i></button>
+                      <button class="btn btn-light btn-sm btnDelete"><i class="fas fa-trash text-danger"></i></button>
                     </form>
                   </td>
                 </tr>

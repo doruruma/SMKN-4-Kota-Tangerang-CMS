@@ -32,7 +32,7 @@
   <div class="container" style="min-height:600px">
     <h1 class="h3 mb-3 text-gray-800">Pages List</h1>
     <div class="row no-gutters">
-      <a href="{{ route('page.new') }}" class="btn btn-sm ml-auto mx-1 btn-primary my-2">Add Pages</a>
+      <a href="{{ route('page.create') }}" class="btn btn-sm ml-auto mx-1 btn-primary my-2">Add Pages</a>
       <div class="col-lg-12 col-md-6 col-sm-12 px-1 py-1">
         <div class="card shadow-sm border-light">
           <div class="card-body">
@@ -44,7 +44,7 @@
                   <th>Title</th>
                   <th>Date</th>
                   <th>Status</th>
-                  <th>Action</th>
+                  <th class="text-center">Action</th>
                 </tr>
               </thead>
 
@@ -56,8 +56,12 @@
                   <td>{{ $page->title }}</td>
                   <td>{{ $page->created_at }}</td>
                   <td>{{ $page->published == 1 ? "Published" : "Draft" }}</td>
-                  <td>
-                    <a href="{{ route('page.delete', ['id' => $page->id]) }}" onclick="return confirm('Remove this page?')">Remove</a> <a href="{{ route('page.edit', ['id' => $page->id]) }}">Edit</a>
+                  <td class="text-center">
+                    <a href="{{ route('page.edit', $page->id) }}" class="btn btn-default btn-sm py-1"><i class="fas fa-pen text-info"></i></a>
+                    <form action="{{ route('page.delete', $page->id) }}" method="POST" class="d-inline py-1">
+                      @csrf @method('DELETE')
+                      <button class="btn btn-default btn-sm"><i class="fas fa-trash text-danger"></i></button>
+                    </form>
                   </td>
                 </tr>
                 @endforeach

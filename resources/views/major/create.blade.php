@@ -10,19 +10,22 @@
   <script src="//cdn.ckeditor.com/4.13.1/full/ckeditor.js" defer></script>
 @endsection
 
-@section('pageJS')
-  <script src="{{ asset('/js/majorCreate.js') }}" defer></script>
-@endsection
-
 @section('script')
   <script>
     $(document).ready(function () {
+
       $('.major').addClass('active')
+
+      CKEDITOR.replace('description', {
+        removeButtons: 'Image'
+      })
+
       $('.custom-file-input').on('change', function () {
         let fileName = $(this).val().split('\\').pop()
         $(this).next('.custom-file-label').addClass('selected').html(fileName)
         $('.img-thumbnail').attr('src', window.URL.createObjectURL(this.files[0]))
       })
+
     })
   </script>
 @endsection
@@ -31,7 +34,7 @@
   @include('layouts.sidebar')
   @include('layouts.nav')
   <div class="container mb-5" style="min-height:600px">
-    <h1 class="h3 mb-3 text-gray-800">Major List</h1>
+    <h1 class="h3 mb-3 text-gray-800">Add Major</h1>
     <div class="row no-gutters">
       <div class="col-lg-12 col-md-6 col-sm-12 px-1 py-1">
         <div class="card shadow-sm border-light">
@@ -56,11 +59,9 @@
               <div class="form-group row">
                 <label for="image" class="col-sm-2 col-form-label">Image</label>
                 <div class="col-sm-10">
-                  <div class="input-group">
-                    <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="image" name="image">
-                      <label class="custom-file-label" for="image" aria-describedby="inputGroupImage">Choose file</label>
-                    </div>
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="image" name="image">
+                    <label class="custom-file-label" for="image" aria-describedby="inputGroupImage">Choose file</label>
                   </div>
                   <small class="text-danger">{{ $errors->first('image') }}</small>
                 </div>

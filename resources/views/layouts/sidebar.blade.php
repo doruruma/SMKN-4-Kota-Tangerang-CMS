@@ -33,8 +33,8 @@
         </a>
         <div id="collapsePost" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner">
-            <a class="collapse-item" href="{{ route('post.index') }}"><i class="fas fa-fw fa-folder mx-1"></i> Posts Data</a>
-            <a class="collapse-item" href="{{ route('post.new') }}"><i class="fas fa-fw fa-plus mx-1"></i> Add Posts</a>
+            <a class="collapse-item" href="{{ route('post.index') }}"><i class="fas fa-fw fa-folder mx-1 text-primary"></i> Posts Data</a>
+            <a class="collapse-item" href="{{ route('post.create') }}"><i class="fas fa-fw fa-plus mx-1 text-primary"></i> Add Posts</a>
           </div>
         </div>
       </li>
@@ -48,7 +48,7 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner">
             <a class="collapse-item" href="{{ route('page.index') }}"><i class="fas fa-fw fa-folder text-primary mx-1"></i> Pages Data</a>
-            <a class="collapse-item" href="{{ route('page.new') }}"><i class="fas fa-fw fa-plus text-primary mx-1"></i> Add Pages</a>
+            <a class="collapse-item" href="{{ route('page.create') }}"><i class="fas fa-fw fa-plus text-primary mx-1"></i> Add Pages</a>
           </div>
         </div>
       </li>
@@ -74,8 +74,8 @@
         </a>
         <div id="collapseOfficial" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner">
-            <a class="collapse-item" href="utilities-color.html"><i class="fas fa-fw fa-folder text-primary mx-1"></i> Official Data</a>
-            <a class="collapse-item" href="utilities-border.html"><i class="fas fa-fw fa-plus text-primary mx-1"></i> Add Official</a>
+            <a class="collapse-item" href="{{ route('official.index') }}"><i class="fas fa-fw fa-folder text-primary mx-1"></i> Official Data</a>
+            <a class="collapse-item" href="{{ route('official.create') }}"><i class="fas fa-fw fa-plus text-primary mx-1"></i> Add Official</a>
           </div>
         </div>
       </li>

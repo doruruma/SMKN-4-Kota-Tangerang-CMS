@@ -72,8 +72,8 @@
               <div class="form-group row">
                 <label for="file" class="col-sm-2 col-form-label">Thumbnail</label>
                 <div class="col-sm">
-                    <input type="file" name="file" id="file" class="d-block"/>
-                    <small class="text-danger file"></small>
+                  <input type="file" name="file" id="file" class="d-block"/>
+                  <small class="text-danger file"></small>
                 </div>
               </div>
 
