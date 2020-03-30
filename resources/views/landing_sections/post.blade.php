@@ -3,7 +3,7 @@
 @section('content')
     <div class="container mt-5 mb-5">
         <div class="row">
-            <div class="col-sm-8">
+            <div class="col-md-8">
                 <div class="card border-0 shadow-lg py-5 px-5 mb-2">
                     <h5 class="font-weight-bold">Jelang Pengumuman Kelulusan. SMKN 4 tumben ga tawuran</h5>
                     <small class="text-muted d-block mb-2">Posted by Admin SMKN 4</small>
@@ -13,14 +13,14 @@
                     </span>
                 </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-md-4">
                 <div class="card border-0 shadow-lg py-5 px-5">
                     <h5 class="font-weight-bold">Recent Articles</h5>
                 <div class="row mb-3">
-                    <div class="col-sm-5">
+                    <div class="col-md-5">
                         <img src="{{ asset('/img/lomba.jpeg') }}" alt="" class="img-fluid d-block" >
                     </div>
-                    <div class="col-sm-7">
+                    <div class="col-md-7">
                         <a href="" class="text-decoration-none text-dark">
                             <span class="font-weight-bold" style="font-size: 12px;">Kegiatan Perjumsa</span>
                             <small class="text-muted d-block" style="font-size : 10px">Posted by Admin SMKN 4</small>
@@ -28,10 +28,10 @@
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <div class="col-sm-5">
+                    <div class="col-md-5">
                         <img src="{{ asset('/img/lomba.jpeg') }}" alt="" class="img-fluid d-block" >
                     </div>
-                    <div class="col-sm-7">
+                    <div class="col-md-7">
                         <a href="" class="text-decoration-none text-dark">
                             <span class="font-weight-bold" style="font-size: 12px;">Ekstrakurikuler Multimedia</span>
                             <small class="text-muted d-block" style="font-size : 10px">Posted by Admin SMKN 4</small>
@@ -39,10 +39,10 @@
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <div class="col-sm-5">
+                    <div class="col-md-5">
                         <img src="{{ asset('/img/lomba.jpeg') }}" alt="" class="img-fluid d-block" >
                     </div>
-                    <div class="col-sm-7">
+                    <div class="col-md-7">
                         <a href="" class="text-decoration-none text-dark">
                             <span class="font-weight-bold" style="font-size: 12px;">SMKN 4 tidak tawuran</span>
                             <small class="text-muted d-block" style="font-size : 10px">Posted by Admin SMKN 4</small>
