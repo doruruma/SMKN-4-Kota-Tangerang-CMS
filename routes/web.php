@@ -17,7 +17,7 @@ Route::post('/login', 'AuthController@postLogin');
 
 Route::group(['middleware' => 'auth'], function() {
 
-    Route::view('/admin', 'dashboard.index');
+    Route::view('/admin', 'dashboard.index')->name('dashboard');
     Route::get('/logout', 'AuthController@logout')->name('logout');
 
     // Teacher Route
