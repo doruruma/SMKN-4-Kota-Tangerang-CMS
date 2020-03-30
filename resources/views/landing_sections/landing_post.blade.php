@@ -12,7 +12,7 @@
                 <div class="card border-0 mb-3 shadow">
                     @foreach ($single as $item)
                     <div class="card-body">
-                        <img src="{{URL::to('/img/'.$item->thumbnail)}}" alt="" style="max-width:100%; max-height:100%; " class="mt-4 mb-4">
+                        <img src="{{URL::to('/thumbnail_posts/'.$item->thumbnail)}}" alt="" style="max-width:100%; max-height:100%; " class="mt-4 mb-4 ">
                             <h4 style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; display:block; ">
                                 <b>
                                     {{$item->title}}
@@ -22,7 +22,7 @@
                                     {{$item->user->name}}
                             </small>
                             <p style="font-size:80%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; display:block; " >
-                                {{$item->content}}
+                                {!!$item->content!!}
                             </p>  
                         </div>
                     @endforeach 
@@ -33,10 +33,10 @@
                 <div class="card mb-3 border-0 shadow">
                     <div class="card-body">
                         <div class="row">
-                        <div class="col-md-6">
-                            <img src="{{URL::to('/img/'.$item->thumbnail)}}" alt="" style="max-width:100%; max-height:100%; ">
+                        <div class="col-md-4 ">
+                            <img src="{{URL::to('/thumbnail_posts/'.$item->thumbnail)}}" alt="" style="max-width:100%; max-height:100%;" >
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-8">
                             <h4>
                                 <b>
                                     {{$item->title}}
@@ -46,7 +46,7 @@
                                     {{$item->user->name}}
                             </small>
                             <p style="font-size:80%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; display:block; " >
-                                {{$item->content}}
+                                {!!$item->content!!}
                             </p>
                             
                         </div>
@@ -65,7 +65,7 @@
         <div class="col-sm-4">
             <div class="card mb-3 mt-3 border-0 shadow">
                 <div class="card-body">
-                    <img src="{{URL::to('/img/'.$item->thumbnail)}}" alt="" style="max-width:100%; max-height:100%; " class="mt-4 mb-4">
+                    <img src="{{URL::to('/thumbnail_posts/'.$item->thumbnail)}}" alt="" style="max-width:100%; max-height:100%; " class="mt-4 mb-4">
                     <h4>
                         <b>
                             {{$item->title}}
@@ -75,7 +75,7 @@
                             {{$item->user->name}}
                     </small>
                     <p style="font-size:80%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; display:block; " >
-                        {{$item->content}}
+                        {!!$item->content!!}
                     </p>
                 </div>
             </div>
