@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\position;
 
 class PositionSeeder extends Seeder
 {
