@@ -21,12 +21,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/logout', 'AuthController@logout')->name('logout');
 
     // Teacher Route
-    Route::get('/admin/teacher', 'TeacherController@teacher')->name('teacher.index');
-    Route::get('/admin/teacher/add', 'TeacherController@add')->name('teacher.add');
-    Route::post('/admin/teacher/store', 'TeacherController@store')->name('teacher.store');
-    Route::get('/admin/teacher/edit/{id}', 'TeacherController@put');
-    Route::put('/admin/teacher/update/{id}', 'TeacherController@update');
-    Route::get('/admin/teacher/delete/{id}', 'TeacherController@delete');
+    Route::get('/admin/teacher','TeacherController@teacher')->name('teacher.index');
+    Route::get('/admin/teacher/new','TeacherController@new')->name('teacher.create');
+    Route::post('/admin/teacher/store','TeacherController@store')->name('teacher.store');
+    Route::get('/admin/teacher/edit/{id}','TeacherController@put')->name('teacher.edit');
+    Route::put('/admin/teacher/{id}','TeacherController@update')->name('teacher.update');
+    Route::delete('/admin/teacher/{id}','TeacherController@delete')->name('teacher.delete');
 
 
     // Profile Route

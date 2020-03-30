@@ -28,8 +28,8 @@
       <div class="col-lg-12 col-md-6 col-sm-12 px-1 py-1">
         <div class="card shadow-sm border-light">
           <div class="card-body">
-            <form action="{{ route('teacher.store') }}" method="POST" enctype="multipart/form-data">
-              @csrf
+            <form action="{{ route('teacher.update', $teacher->id) }}" method="POST" enctype="multipart/form-data">
+              @csrf @method('PUT')
 
               <div class="form-group row">
                 <label for="name" class="col-sm-2 col-form-label">Name</label>
@@ -49,13 +49,7 @@
 
               <div class="form-group row mt-3" style="margin-bottom:5px">
                 <div class="col-3 offset-md-2">
-                  <img src="{{ asset('img/{{ $teacher->img }}') }}" class="img-thumbnail" style="width:200px">
-                </div>
-              </div>
-
-              <div class="form-group row mt-3" style="margin-bottom:5px">
-                <div class="col-3 offset-md-2">
-                  <img src="{{ asset('img/default_profile.png') }}" class="img-thumbnail" style="width:200px">
+                  <img src="{{ asset('teachers/' . $teacher->image) }}" class="img-thumbnail" style="width:200px">
                 </div>
               </div>
 
