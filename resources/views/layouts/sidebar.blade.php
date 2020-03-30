@@ -5,7 +5,7 @@
     <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center bg-white justify-content-center mb-1" href="{{ url('/') }}" style="color:#28479c">
+      <a class="sidebar-brand d-flex align-items-center bg-white justify-content-center mb-1" href="{{ route('dashboard') }}" style="color:#28479c">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
@@ -53,32 +53,12 @@
         </div>
       </li>
 
-      <!-- Nav Item - Media Collapse Menu -->
-      <li class="nav-item medias">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMedia" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fas fa-fw fa-wsrench"></i>
-          <span>Media</span>
-        </a>
-        <div id="collapseMedia" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner">
-            <a class="collapse-item" href="utilities-color.html"><i class="fas fa-fw fa-folder text-primary mx-1"></i> Media Data</a>
-            <a class="collapse-item" href="utilities-border.html"><i class="fas fa-fw fa-plus text-primary mx-1"></i> Add Media</a>
-          </div>
-        </div>
-      </li>
-
       <!-- Nav Item - Gallery Collapse Menu -->
       <li class="nav-item galleries">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseGallery" aria-expanded="true" aria-controls="collapseUtilities">
+        <a class="nav-link" href="{{ route('gallery.index') }}">
           <i class="fas fa-fw fa-wsrench"></i>
           <span>Gallery</span>
         </a>
-        <div id="collapseGallery" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner">
-            <a class="collapse-item" href="{{ route('gallery.index') }}"><i class="fas fa-fw fa-folder text-primary mx-1"></i> Gallery Data</a>
-            <a class="collapse-item" href="utilities-border.html"><i class="fas fa-fw fa-plus text-primary mx-1"></i> Add Gallery</a>
-          </div>
-        </div>
       </li>
 
       <!-- Heading -->

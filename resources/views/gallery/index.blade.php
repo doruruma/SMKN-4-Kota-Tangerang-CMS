@@ -7,11 +7,26 @@
 @section('script')
   <script>
     $(document).ready(function() {
+
+      $('.galleries').addClass('active')
+
       $('.custom-file-input').change(function(){
         let fileName =  $(this).val().split('\\').pop()
         $(this).next('.custom-file-label').addClass('selected').html(fileName)
         $('.imgPreview').attr('src', window.URL.createObjectURL(this.files[0]))
       })
+
+      $('.btnDelete').click(function(){
+        Swal.fire({
+          title: 'Konfirmasi Hapus',
+          text: 'Yakin Hapus Gambar?',
+          icon: 'warning',
+          showCancelButton: true
+        }).then((res) => {
+          res.value ? $(this).parent().submit() : false
+        })
+      })
+
     })
   </script>
 @endsection
@@ -27,16 +42,16 @@
     <button class="btn btn-primary btn-radius" data-toggle="modal" data-target="#tambahGambar"><i class="fas fa-fw fa-image"></i> Tambah Gambar</button>
     <button class="btn btn-primary btn-radius" data-toggle="modal" data-target="#tambahVideo"><i class="fas fa-fw fa-video"></i> Tambah Video</button>
     <hr>
-    <div class="row">
+    <div class="row no-gutters">
       @foreach ($media as $m)
-        <div class="col-lg-3 col-md-4 col-sm-6 text-center">
-          <img src="../img/media/{{ $m->name }}" alt="{{ $m->name }}" class="img-thumbnail rounded" style="height:95%">
-          <form action="gallery" id="f-m{{ $m->id }}" method="post">
+        <div class="col-lg-3 col-md-4 col-sm-6 text-center px-1 py-1">
+          <img src="../img/media/{{ $m->name }}" alt="{{ $m->name }}" class="img-thumbnail rounded shadow-sm" style="height:230px; width:400px">
+          <form action="gallery" method="post">
             @method('DELETE')
             @csrf
             <input type="hidden" name="image" value="{{ $m->slug }}">
+            <button type="button" class="btn btnDelete btn-danger btn-sm"><i class="fas fa-fw fa-trash"></i></button>
           </form>
-          <button type="button" onclick="document.getElementById('f-m{{ $m->id }}').submit()" class="btn btnDelete btn-danger btn-sm"><i class="fas fa-fw fa-trash"></i></button>
         </div>
       @endforeach
     </div>
