@@ -3,8 +3,8 @@
 @section('content')
     <div class="container mt-5 mb-5">
         <div class="row">
-            <div class="col-md-8">
-                <div class="card border-0 shadow-lg py-5 px-5 mb-2">
+            <div class="col-md-8 p-sm-5 ">
+                <div class="card border-0 shadow-sm py-5 px-5 mb-2">
                     <h5 class="font-weight-bold">Jelang Pengumuman Kelulusan. SMKN 4 tumben ga tawuran</h5>
                     <small class="text-muted d-block mb-2">Posted by Admin SMKN 4</small>
                     <img src="{{ asset('/img/lomba.jpeg') }}" alt="" class="img-fluid d-block mb-3"  style="30vh">
@@ -13,8 +13,8 @@
                     </span>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card border-0 shadow-lg py-5 px-5">
+            <div class="col-md-4 p-sm-5">
+                <div class="card border-0 shadow-sm py-5 px-5">
                     <h5 class="font-weight-bold">Recent Articles</h5>
                 <div class="row mb-3">
                     <div class="col-md-5">
@@ -27,8 +27,8 @@
                         </a>
                     </div>
                 </div>
-                <div class="row mb-3">
-                    <div class="col-md-5">
+                <div class="row mb-3 text-center">
+                    <div class="col-md-5 text-center">
                         <img src="{{ asset('/img/lomba.jpeg') }}" alt="" class="img-fluid d-block" >
                     </div>
                     <div class="col-md-7">
