@@ -55,8 +55,6 @@
             }
 
             .isi {
-                content:"";
-                display:block;
                 position:absolute;
                 bottom:0;
                 left:0;
@@ -67,6 +65,37 @@
             .white-space {
                 margin-top: 80px;
                 margin-bottom: 95px;
+            }
+
+            .image-fix {
+                height:400px !important;
+                width:100%;
+            }
+
+            .image-major-fix {
+                height:300px !important;
+                width: 100%;
+                background-size: cover;
+            }
+
+            @media screen and (max-width:1024px) {
+                .overflow-show {
+                    overflow-x:scroll !important;
+                }
+
+                .image-fix {
+                    min-height:180px !important;
+                    max-height:180px !important;
+                }
+
+                .image-major-fix {
+                    min-height:200px !important;
+                    max-height:200px !important;
+                }
+
+                .text-center-fix {
+                    text-align: center;
+                }
             }
         </style>
     </head>

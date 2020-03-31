@@ -12,7 +12,7 @@
                             @foreach($news as $new):
 
                                 <div class="carousel-item {{ !$counter ? "active" : "" }}" style="max-width:100%;">
-                                    <img src="{{ URL::to('/thumbnail_posts/'.$new->thumbnail) }}" class="d-block w-100 image-fix">
+                                    <img src="{{ URL::to('/thumbnail_posts/'.$new->thumbnail) }}" class="w-100 image-fix">
                                     <div class="isi">
                                         <div class="row" style="height:50px;">
                                             <div class="col my-auto ml-3">
@@ -89,9 +89,9 @@
                                         <div class="card-body p-0">
                                             <div class="row">
                                                 <div class="col-lg-4 col-md-12 col-sm-12">
-                                                    <div class="image-major-fix" style="min-height:300px; max-height:300px; background:url({{ URL::to('/majors/'.$major->image) }});background-size:cover"></div>
+                                                    <div class="image-major-fix w-100" style="background:url({{ URL::to('/majors/'.$major->image) }});background-size:cover"></div>
                                                 </div>
-                                                <div class="col-lg-8 col-md-12 col-sm-12 my-lg-auto px-5 px-lg-4 mt-lg-0 mb-5 mb-lg-0 mt-5 text-center-fix">
+                                                <div class="col-lg-8 col-md-12 col-sm-12 my-lg-auto px-5 px-lg-4 mt-lg-0 mb-5 mb-lg-0 mt-5">
                                                     <h3 class="bold">{{ $major->name }}</h3>
                                                     <p style="text-overflow:ellipsis; overflow:hidden; width: 18px;">{!!$major->description!!}</p>
                                                     <div class="form-group">

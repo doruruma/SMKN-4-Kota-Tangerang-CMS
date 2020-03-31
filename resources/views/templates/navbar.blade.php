@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark shadow-sm" style="background-color:#1E54BF;height:80px;z-index:100">
     <div class="container">
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand m-auto" href="/">
             <img width="190" src="{{ asset('/img/logo-header.png') }}" alt="">
         </a>
         <button class="navbar-toggler d-md-none d-none d-sm-none" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,32 +23,6 @@
 </nav>
 
 @if(count($pages) > 0)
-    <style scoped>
-        .image-fix {
-            max-height:400px !important;
-            min-height:400px !important;
-        }
-
-        @media screen and (max-width:1024px) {
-            .overflow-show {
-                overflow-x:scroll !important;
-            }
-
-            .image-fix {
-                min-height:150px !important;
-                max-height:150px !important;
-            }
-
-            .image-major-fix {
-                min-height:100px !important;
-                max-height:100px !important;
-            }
-
-            .text-center-fix {
-                text-align: center;
-            }
-        }
-    </style>
 
     <nav class="navbar navbar-expand navbar-dark text-nowrap overflow-show" style="height:50px;background-color:#1C4FB3;overflow-x:hidden; overflow-y:hidden">
         <div class="container">
