@@ -86,14 +86,14 @@
                             @foreach($majors as $major)
                                 <div class="carousel-item {{ !$counter++ ? "active" : "" }}">
                                     <div class="card shadow-sm border-0">
-                                        <div class="card-body p-0">
+                                        <div class="card-body p-0 pr-lg-4">
                                             <div class="row">
                                                 <div class="col-lg-4 col-md-12 col-sm-12">
                                                     <div class="image-major-fix w-100" style="background:url({{ URL::to('/majors/'.$major->image) }});background-size:cover"></div>
                                                 </div>
                                                 <div class="col-lg-8 col-md-12 col-sm-12 my-lg-auto px-5 px-lg-4 mt-lg-0 mb-5 mb-lg-0 mt-5">
                                                     <h3 class="bold">{{ $major->name }}</h3>
-                                                    <p style="text-overflow:ellipsis; overflow:hidden; width: 18px;">{!!$major->description!!}</p>
+                                                    <div class="bulet mb-3">{!!$major->description!!}</div>
                                                     <div class="form-group">
                                                         <a href="" class="btn" style="background-color: #1E54BF;color:white; width: 100px;">More</a>
                                                     </div>
@@ -145,6 +145,18 @@
         </div>
     </div>
 
+    <script>
+        $(document).ready(() => {
+            let get = $(".bulet")
 
+            $.each(get, function(index, value) {
+                let string = $(value).html()
+                string = string.toString()
+                string = string.replace( /(<([^>]+)>)/ig, '')
+                let res = string.substring(0, 199)
+                $(value).html(res + "...")
+            })
+        })
+    </script>
 
 @endsection

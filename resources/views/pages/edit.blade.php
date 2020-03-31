@@ -18,7 +18,8 @@
         })
 
         let res = CKEDITOR.replace('editor', {
-            removeButtons: 'Image'
+            filebrowserUploadUrl: "/admin/upload/image/ckeditor?_token="+$("input[name='_token']").val(),
+            filebrowserUploadMethod: "form"
         })
 
         $("#page_submit").on('submit', function(e) {

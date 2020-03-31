@@ -2,7 +2,7 @@
 
 
 @section('content')
-    
+
     <div class="container mt-5 mb-5">
         <h3 class="mb-3"><b>Latest Post</b></h3>
 
@@ -21,15 +21,15 @@
                             </h4>
                             <small>
                                     {{$item->user->name}}
-                            </small> 
+                            </small>
                         </div>
                     </a>
-                    @endforeach 
+                    @endforeach
                 </div>
             </div>
             <div class="col-sm-5 px-2" style="overflow:hidden">
                 @foreach ($latest as $item)
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="{{ URL::to('/'.$item->category->slug.'/'.$item->slug) }}" class="text-decoration-none text-dark">
                 <div class="card mb-3 border-0 shadow">
                     <div class="card-body">
                         <div class="row">
@@ -53,7 +53,7 @@
                 @endforeach
             </div>
         </div>
-    
+
 
     {{-- Recent Side --}}
     <h3 class="mb-3"><b>{{$title}}</b></h3>

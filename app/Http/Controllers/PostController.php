@@ -225,4 +225,33 @@ class PostController extends Controller
         // redirect if success
         return redirect(route('post.index'));
     }
+
+    public function uploadckeditor(Request $req)
+    {
+        if($req->hasFile('upload')) {
+                //get filename with extension
+            $filenamewithextension = $req->file('upload')->getClientOriginalName();
+
+            //get filename without extension
+            $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+
+            //get file extension
+            $extension = $req->file('upload')->getClientOriginalExtension();
+
+            //filename to store
+            $filenametostore = $filename.'_'.time().'.'.$extension;
+
+            //Upload File
+            $req->file('upload')->move('./ckeditor', $filenametostore);
+
+            $CKEditorFuncNum = $req->input('CKEditorFuncNum');
+            $url = asset('ckeditor/'.$filenametostore);
+            $msg = 'Image successfully uploaded';
+            $re = "<script>window.parent.CKEDITOR.tools.callFunction($CKEditorFuncNum, '$url', '$msg')</script>";
+
+            // Render HTML output
+            @header('Content-type: text/html; charset=utf-8');
+            echo $re;
+        }
+    }
 }

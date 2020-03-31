@@ -71,6 +71,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/official/edit/{id}','OfficialController@put')->name('official.edit');
     Route::put('/admin/official/{id}','OfficialController@update')->name('official.update');
     Route::delete('/admin/official/{id}', 'OfficialController@delete')->name('official.delete');
+
+    Route::post('/admin/upload/image/ckeditor', 'PostController@uploadckeditor');
 });
 
 // client side

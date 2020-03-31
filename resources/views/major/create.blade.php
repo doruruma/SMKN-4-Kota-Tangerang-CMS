@@ -17,7 +17,8 @@
       $('.major').addClass('active')
 
       CKEDITOR.replace('description', {
-        removeButtons: 'Image'
+        filebrowserUploadUrl: "/admin/upload/image/ckeditor?_token="+$("input[name='_token']").val(),
+        filebrowserUploadMethod: "form"
       })
 
       $('.custom-file-input').on('change', function () {
