@@ -13,9 +13,9 @@ class OfficialController extends Controller
     public function index()
     {
         $official = Official::all();
-
-        return view('official/official', compact('official'));
+        return view('official/index', compact('official'));
     }
+    
     public function position_data()
     {
         $position = Position::all();

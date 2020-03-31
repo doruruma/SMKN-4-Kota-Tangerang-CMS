@@ -17,7 +17,7 @@ Route::post('/login', 'AuthController@postLogin');
 
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::view('/admin', 'dashboard.index');
+    Route::view('/admin', 'dashboard.index')->name('dashboard');
     Route::get('/logout', 'AuthController@logout')->name('logout');
 
     // Teacher Route
@@ -41,23 +41,23 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Post view
     Route::get('/admin/posts', 'PostController@get')->name('post.index');
-    Route::get('/admin/post/new', 'PostController@new')->name('post.new');
+    Route::get('/admin/post/new', 'PostController@new')->name('post.create');
     Route::get('/admin/post/{id}', 'PostController@edit')->name('post.edit');
 
     // Post API
     Route::post('/admin/post', 'PostController@save')->name('post.store');
     Route::post('/admin/post/{id}', 'PostController@put')->name('post.update');
-    Route::get('/admin/post/delete/{id}', 'PostController@delete')->name('post.delete');
+    Route::delete('/admin/post/{id}', 'PostController@delete')->name('post.delete');
 
     // Page view
     Route::get('/admin/pages', 'PageController@get')->name('page.index');
-    Route::get('/admin/page/new', 'PageController@new')->name('page.new');
+    Route::get('/admin/page/new', 'PageController@new')->name('page.create');
     Route::get('/admin/page/{id}', 'PageController@edit')->name('page.edit');
 
     // Page API
     Route::post('/admin/page', 'PageController@save')->name('page.store');
     Route::put('/admin/page/{id}', 'PageController@put')->name('page.update');
-    Route::get('/admin/page/delete/{id}', 'PageController@delete')->name('page.delete');
+    Route::delete('/admin/page/{id}', 'PageController@delete')->name('page.delete');
 
     // Gallery
     Route::get('/admin/gallery', 'GalleryController@index')->name('gallery.index');
@@ -66,11 +66,11 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Official Route
     Route::get('/admin/official','OfficialController@index')->name('official.index');
-    Route::get('/admin/official/add','OfficialController@position_data');
-    Route::post('/admin/official/store','OfficialController@store')->name('official.add');
-    Route::get('/admin/official/put/{id}','OfficialController@put')->name('official.put');
-    Route::post('/admin/official/update/{id}','OfficialController@update')->name('official.update');
-    Route::get('/admin/official/delete/{id}', 'OfficialController@delete')->name('official.delete');
+    Route::get('/admin/official/new','OfficialController@position_data')->name('official.create');
+    Route::post('/admin/official/store','OfficialController@store')->name('official.store');
+    Route::get('/admin/official/edit/{id}','OfficialController@put')->name('official.edit');
+    Route::put('/admin/official/{id}','OfficialController@update')->name('official.update');
+    Route::delete('/admin/official/{id}', 'OfficialController@delete')->name('official.delete');
 });
 
 // client side

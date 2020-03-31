@@ -29,22 +29,28 @@ $(document).ready(() => {
       data: data,
       success: function (res) {
         Swal.fire({
-            icon: 'success',
-            title: 'Your work has been saved',
-            showConfirmButton: false,
-            timer: 1500
-          })
-          setTimeout(() => {
-              window.location.href="/admin/posts"
-          }, 2000)
+          icon: 'success',
+          title: 'Your work has been saved',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        setTimeout(() => {
+          window.location.href = "/admin/posts"
+        }, 2000)
       },
-      error: function (rej) {
-        Swal.fire({
+      error: function (res) {
+        if (res.status == 422) {
+          $('.title').html(res.responseJSON[0].title)
+          $('.content').html(res.responseJSON[0].content)
+          $('.file').html(res.responseJSON[0].file)
+        } else {
+          Swal.fire({
             icon: 'error',
             title: 'Error',
             showConfirmButton: false,
             timer: 1500
           })
+        }
       }
     })
   })

@@ -15,8 +15,22 @@
 @section('script')
 <script>
   $(document).ready(function () {
+
     $('.post').addClass('active')
     $('.table').DataTable()
+
+    $('.btnDelete').click(function (e) {
+      e.preventDefault()
+      Swal.fire({
+        title: 'Konfirmasi Hapus',
+        text: 'Yakin Hapus Post?',
+        icon: 'warning',
+        showCancelButton: true
+      }).then((res) => {
+        res.value ? $(this).parent().submit() : false
+      })
+    })
+
   })
 </script>
 @endsection
@@ -27,7 +41,7 @@
   <div class="container mb-5" style="min-height:600px">
     <h1 class="h3 mb-3 text-gray-800">Post List</h1>
     <div class="row no-gutters">
-      <a href="{{ url('/admin/post/new') }}" class="btn btn-sm ml-auto mx-1 btn-primary my-2">Add Posts</a>
+      <a href="{{ route('post.create') }}" class="btn btn-sm ml-auto mx-1 btn-primary my-2">Add Posts</a>
       <div class="col-lg-12 col-md-6 col-sm-12 px-1 py-1">
         <div class="card shadow-sm border-light">
           <div class="card-body">
@@ -40,7 +54,7 @@
                   <th>Category</th>
                   <th>Date</th>
                   <th>Status</th>
-                  <th>Action</th>
+                  <th class="text-center">Action</th>
                 </tr>
               </thead>
 
@@ -53,8 +67,12 @@
                   <td>{{ $post->category->category }}</td>
                   <td>{{ $post->created_at }}</td>
                   <td>{{ $post->published == 1 ? "Published" : "Draft" }}</td>
-                  <td>
-                    <a href="/admin/post/delete/{{ $post->id }}" onclick="return confirm('Remove this post?')">Remove</a> <a href="/admin/post/{{ $post->id }}">Edit</a>
+                  <td class="text-center">
+                    <a href="{{ route('post.edit', $post->id) }}" class="btn btn-light btn-sm py-1"><i class="fas fa-pen text-info"></i></a>
+                    <form action="{{ route('post.delete', $post->id) }}" method="POST" class="d-inline py-1">
+                      @csrf @method('DELETE')
+                      <button class="btn btn-light btn-sm btnDelete"><i class="fas fa-trash text-danger"></i></button>
+                    </form>
                   </td>
                 </tr>
                 @endforeach

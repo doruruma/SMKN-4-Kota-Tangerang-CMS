@@ -25,20 +25,20 @@
           <div class="card-body">
             <form action="" id="page_submit" method="POST">
               @csrf
-                <input type="hidden" name="user_id" id="user_id" value="{{ Auth::user()->id }}">
+              <input type="hidden" name="user_id" id="user_id" value="{{ Auth::user()->id }}">
 
               <div class="form-group row">
                 <label for="title" class="col-sm-2 col-form-label">Title</label>
                 <div class="col-sm-10">
-                  <input type="text" name="title" id="title" class="form-control form-control-sm">
-                  <small class="text-danger">{{ $errors->first('title') }}</small>
+                  <input type="text" name="title" id="title" class="form-control form-control-sm" value="{{ old('title') }}">
+                  <small class="text-danger title"></small>
                 </div>
               </div>
 
               <div class="form-group row">
                 <label for="slug_preview" class="col-sm-2 col-form-label">Slug Preview</label>
                 <div class="col-sm-10">
-                  <input type="text" name="slug_preview" id="slug_preview" class="form-control form-control-sm">
+                  <input type="text" name="slug_preview" id="slug_preview" class="form-control form-control-sm" readonly>
                 </div>
               </div>
 
@@ -56,7 +56,8 @@
               <div class="form-group row">
                 <label for="editor" class="col-sm-2 col-form-label">Content</label>
                 <div class="col-sm-10">
-                  <textarea name="editor" id="editor"></textarea>
+                  <textarea name="editor" id="editor">{{ old('editor') }}</textarea>
+                  <small class="text-danger content"></small>
                 </div>
               </div>
 
