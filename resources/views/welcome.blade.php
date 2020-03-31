@@ -10,13 +10,11 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans&display=swap" rel="stylesheet">
         <link rel="shortcut icon" href="{{ asset('/img/smk4.png') }}" type="image/x-icon">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link rel="stylesheet" href="//code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.css">
         <link rel="stylesheet" href="{{ asset('/vendor/fontawesome-free/css/all.css') }}">
         <link rel="stylesheet" href="{{ asset('/vendor/owlcarousel/dist/assets/owl.carousel.min.css') }}">
         <link rel="stylesheet" href="{{ asset('/vendor/owlcarousel/dist/assets/owl.theme.default.min.css') }}">
 
         <script src="{{ asset('/vendor/jquery/jquery.min.js') }}"></script>
-        <script src="//code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.js"></script>
 
         <script src="{{ asset('/vendor/owlcarousel/dist/owl.carousel.min.js') }}"></script>
         <script src="{{ asset('/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

@@ -77,39 +77,38 @@
                     <div style="height:5px; width: 50px; background-color:yellow;" class="m-auto"></div>
                 </div>
                 <div id="carouselJurusan" class="carousel slide" data-ride="carousel" data-interval="false">
-                    <div class="carousel-inner">
-                        <div class="row mt-5">
-                            <div class="col-1 my-auto">
-                                <a class="carousel-control-prev-icon bg-secondary float-left" href="#carouselJurusan" data-slide="prev" aria-hidden="true"></a>
-                            </div>
-                            <div class="col-10" style="overflow-x: hidden">
-                                @php $counter = 0; @endphp
-                                @foreach($majors as $major)
-                                    <div class="carousel-item {{ !$counter++ ? "active" : "" }}">
-                                        <div class="card shadow-sm border-0">
-                                            <div class="card-body p-0" style="min-height:500px">
-                                                <div class="row">
-                                                    <div class="col-lg-4 col-md-12 col-sm-12">
-                                                        <div class="image-major-fix" style="min-height:500px; max-height:500px; background:url({{ URL::to('/majors/'.$major->image) }});background-size:cover"></div>
-                                                    </div>
-                                                    <div class="col-lg-8 col-md-12 col-sm-12 my-lg-auto pl-lg-4 pr-lg-5 mt-lg-0 mb-5 mb-lg-0 mt-5 text-center-fix">
-                                                        <h3 class="bold">{{ $major->name }}</h3>
-                                                        <p style="text-overflow:ellipsis; overflow:hidden; width: 18px;">{!!$major->description!!}</p>
-                                                        <div class="form-group">
-                                                            <a href="" class="btn" style="background-color: #1E54BF;color:white; width: 100px;">More</a>
-                                                        </div>
+                    <div class="row mt-5">
+                        <div class="col-1 d-none d-lg-block my-auto">
+                            <a class="carousel-control-prev-icon bg-secondary float-left" href="#carouselJurusan" data-slide="prev" aria-hidden="true"></a>
+                        </div>
+                        <div class="col-12 p-sm-5 p-md-5 p-xs-5 col-lg-10 carousel-inner" style="overflow-x: hidden">
+                            @php $counter = 0; @endphp
+                            @foreach($majors as $major)
+                                <div class="carousel-item {{ !$counter++ ? "active" : "" }}">
+                                    <div class="card shadow-sm border-0">
+                                        <div class="card-body p-0">
+                                            <div class="row">
+                                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                                    <div class="image-major-fix" style="min-height:300px; max-height:300px; background:url({{ URL::to('/majors/'.$major->image) }});background-size:cover"></div>
+                                                </div>
+                                                <div class="col-lg-8 col-md-12 col-sm-12 my-lg-auto px-5 px-lg-4 mt-lg-0 mb-5 mb-lg-0 mt-5 text-center-fix">
+                                                    <h3 class="bold">{{ $major->name }}</h3>
+                                                    <p style="text-overflow:ellipsis; overflow:hidden; width: 18px;">{!!$major->description!!}</p>
+                                                    <div class="form-group">
+                                                        <a href="" class="btn" style="background-color: #1E54BF;color:white; width: 100px;">More</a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                @endforeach
-                            </div>
-                            <div class="col-1 my-auto">
-                                <a class="carousel-control-next-icon bg-secondary float-right" aria-hidden="true"  href="#carouselJurusan" data-slide="next"></a>
-                            </div>
+                                </div>
+                            @endforeach
+                        </div>
+                        <div class="col-1 d-none d-lg-block my-auto">
+                            <a class="carousel-control-next-icon bg-secondary float-right" aria-hidden="true"  href="#carouselJurusan" data-slide="next"></a>
                         </div>
                     </div>
+
                 </div>
             </div>
         @endif
@@ -146,14 +145,6 @@
         </div>
     </div>
 
-    <script>
-        $("#carouselJurusan").on('swipeleft', function(e) {
-            $("#carouselJurusan").carousel('next')
-        })
 
-        $("#carouselJurusan").on('swiperight', function(e) {
-            $("#carouselJurusan").carousel('prev')
-        })
-    </script>
 
 @endsection
