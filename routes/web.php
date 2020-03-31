@@ -83,7 +83,7 @@ Route::get('/prestasi', 'LandingPage@prestasi');
 Route::get('/events', 'LandingPage@event');
 
 //Post Page by category
-Route::get('/post_category/post_slug', 'LandingPage@post');
+Route::get('/{post_category}/{post_slug}', 'LandingPage@post');
 Route::get('/{slug_page}', 'LandingPage@page');
 
 
