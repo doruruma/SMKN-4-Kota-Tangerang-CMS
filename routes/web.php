@@ -74,6 +74,17 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 // client side
+
+//home
 Route::get('/', 'LandingPage@index');
-Route::get('/{post_category}/{post_slug}', 'LandingPage@post');
+Route::get('/news','LandingPage@news');
+Route::get('/articles', 'LandingPage@articles');
+Route::get('/prestasi', 'LandingPage@prestasi');
+Route::get('/events', 'LandingPage@event');
+
+//Post Page by category
+Route::get('/post_category/post_slug', 'LandingPage@post');
 Route::get('/{slug_page}', 'LandingPage@page');
+
+
+

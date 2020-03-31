@@ -28,13 +28,8 @@ $(document).ready(() => {
           timer: 1500
         })
 
-<<<<<<< HEAD
           setTimeout(() => {
             window.location.href="/admin/pages"
-=======
-        setTimeout(() => {
-          window.location.href = "/admin/page"
->>>>>>> team/andra
         }, 2000)
       },
       error: function (res) {

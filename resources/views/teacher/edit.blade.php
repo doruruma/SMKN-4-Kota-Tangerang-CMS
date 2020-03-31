@@ -37,15 +37,15 @@
                   <input type="text" name="name" id="name" class="form-control form-control-sm" value="{{ old('name') ?? $teacher->name }}">
                   <small class="text-danger">{{ $errors->first('name') }}</small>
                 </div>
-              </div>
-
+              
               <div class="form-group row">
-                <label for="subject" class="col-sm-2 col-form-label">Subject</label>
+                <label for="subject" class="col-sm-2 col-form-label">subject</label>
                 <div class="col-sm-10">
                   <input type="text" name="subject" id="subject" class="form-control form-control-sm" value="{{ old('subject') ?? $teacher->subject }}">
                   <small class="text-danger">{{ $errors->first('subject') }}</small>
                 </div>
-              </div>
+              </div> 
+                 
 
               <div class="form-group row mt-3" style="margin-bottom:5px">
                 <div class="col-3 offset-md-2">
