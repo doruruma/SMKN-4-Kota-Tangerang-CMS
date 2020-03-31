@@ -11,6 +11,7 @@
             <div class="col-lg-7 px-2">
                 <div class="card border-0 mb-3 shadow">
                     @foreach ($single as $item)
+                    <a href="#" class="text-decoration-none text-dark">
                     <div class="card-body">
                         <img src="{{URL::to('/thumbnail_posts/'.$item->thumbnail)}}" alt="" style="max-width:100%; max-height:100%; " class="mt-4 mb-4 ">
                             <h4 style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; display:block; ">
@@ -20,16 +21,15 @@
                             </h4>
                             <small>
                                     {{$item->user->name}}
-                            </small>
-                            <p style="font-size:80%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; display:block; " >
-                                {!!$item->content!!}
-                            </p>  
+                            </small> 
                         </div>
+                    </a>
                     @endforeach 
                 </div>
             </div>
             <div class="col-sm-5 px-2" style="overflow:hidden">
                 @foreach ($latest as $item)
+                <a href="#" class="text-decoration-none text-dark">
                 <div class="card mb-3 border-0 shadow">
                     <div class="card-body">
                         <div class="row">
@@ -45,14 +45,11 @@
                             <small>
                                     {{$item->user->name}}
                             </small>
-                            <p style="font-size:80%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; display:block; " >
-                                {!!$item->content!!}
-                            </p>
-                            
                         </div>
                     </div>
                 </div>
             </div>
+                </a>
                 @endforeach
             </div>
         </div>
@@ -74,9 +71,6 @@
                     <small>
                             {{$item->user->name}}
                     </small>
-                    <p style="font-size:80%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; display:block; " >
-                        {!!$item->content!!}
-                    </p>
                 </div>
             </div>
         </div>
