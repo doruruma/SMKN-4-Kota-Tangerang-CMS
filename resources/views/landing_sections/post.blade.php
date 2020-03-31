@@ -1,54 +1,34 @@
 @extends('welcome')
 
 @section('content')
-    <div class="container mt-5 mb-5">
+    <div class="container mt-5">
         <div class="row">
-            <div class="col-md-8 p-sm-5 ">
+            <div class="col-md-8 ">
                 <div class="card border-0 shadow-sm py-5 px-5 mb-2">
-                    <h5 class="font-weight-bold">Jelang Pengumuman Kelulusan. SMKN 4 tumben ga tawuran</h5>
-                    <small class="text-muted d-block mb-2">Posted by Admin SMKN 4</small>
-                    <img src="{{ asset('/img/lomba.jpeg') }}" alt="" class="img-fluid d-block mb-3"  style="30vh">
-                    <span style="font-size : 13px;">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum obcaecati quae, perferendis delectus voluptatum similique amet. Quam odit ratione libero, vitae iusto, minus rerum corporis ea distinctio impedit quidem velit. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto fugiat in similique doloribus modi vitae minima, repellendus officiis sint provident, voluptatibus tempore perspiciatis eius dignissimos dolorum distinctio, voluptate animi! Nisi? Lorem ipsum dolor sit amet consectetur adipisicing elit. <br> <br> A neque sed provident ex sunt. Commodi iusto reprehenderit pariatur harum nemo voluptates. Dolores quod perspiciatis totam rerum magnam obcaecati iure dolorum? Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque doloremque accusamus explicabo molestias corporis quo itaque cupiditate deserunt architecto dolore molestiae modi earum est eligendi, iusto soluta. Repudiandae, veritatis a.
+                    <h5 class="font-weight-bold">{{ $post->title }}</h5>
+                    <small class="text-muted d-block mb-2">Posted by {{ $post->user->name }}</small>
+                    <img src="{{ asset('/thumbnail_posts/'.$post->thumbnail) }}" alt="" class="img-fluid d-block mb-3">
+                    <span class="open-sans" style="font-size : 13px;">
+                        {!! $post->content !!}
                     </span>
                 </div>
             </div>
-            <div class="col-md-4 p-sm-5">
+            <div class="col-md-4">
                 <div class="card border-0 shadow-sm py-5 px-5">
-                    <h5 class="font-weight-bold">Recent Articles</h5>
-                <div class="row mb-3">
-                    <div class="col-md-5">
-                        <img src="{{ asset('/img/lomba.jpeg') }}" alt="" class="img-fluid d-block" >
-                    </div>
-                    <div class="col-md-7">
-                        <a href="" class="text-decoration-none text-dark">
-                            <span class="font-weight-bold" style="font-size: 12px;">Kegiatan Perjumsa</span>
-                            <small class="text-muted d-block" style="font-size : 10px">Posted by Admin SMKN 4</small>
-                        </a>
-                    </div>
-                </div>
-                <div class="row mb-3 text-center">
-                    <div class="col-md-5 text-center">
-                        <img src="{{ asset('/img/lomba.jpeg') }}" alt="" class="img-fluid d-block" >
-                    </div>
-                    <div class="col-md-7">
-                        <a href="" class="text-decoration-none text-dark">
-                            <span class="font-weight-bold" style="font-size: 12px;">Ekstrakurikuler Multimedia</span>
-                            <small class="text-muted d-block" style="font-size : 10px">Posted by Admin SMKN 4</small>
-                        </a>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-5">
-                        <img src="{{ asset('/img/lomba.jpeg') }}" alt="" class="img-fluid d-block" >
-                    </div>
-                    <div class="col-md-7">
-                        <a href="" class="text-decoration-none text-dark">
-                            <span class="font-weight-bold" style="font-size: 12px;">SMKN 4 tidak tawuran</span>
-                            <small class="text-muted d-block" style="font-size : 10px">Posted by Admin SMKN 4</small>
-                        </a>
-                    </div>
-                </div>
+                    <h5 class="font-weight-bold">Recent {{ $category->category }}</h5>
+                    @foreach($category->posts as $post)
+                        <div class="row mb-3">
+                            <div class="col-md-5">
+                                <img src="{{ asset('/thumbnail_posts/'.$post->thumbnail) }}" alt="" class="img-fluid d-block" >
+                            </div>
+                            <div class="col-md-7">
+                                <a href="" class="text-decoration-none text-dark">
+                                    <span class="font-weight-bold" style="font-size: 12px;">{{ $post->title }}</span>
+                                    <small class="text-muted d-block" style="font-size : 10px">Posted by {{ $post->user->name }}</small>
+                                </a>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
 
             </div>

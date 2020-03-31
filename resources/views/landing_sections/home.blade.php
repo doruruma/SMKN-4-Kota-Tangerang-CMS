@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="container" style="min-height: 200vh;">
+    <div class="container" style="min-height: 100vh;">
         <div id="landing" class="mt-lg-5 mt-sm-3 mt-md-3 mt-3 mb-5">
             <div class="row">
                 @if(count($news) > 0)
@@ -12,7 +12,7 @@
                             @foreach($news as $new):
 
                                 <div class="carousel-item {{ !$counter ? "active" : "" }}" style="max-width:100%;">
-                                    <img src="{{ URL::to('/thumbnail_posts/'.$new->thumbnail) }}" class="d-block w-100 image-fix" style="max-height:400px;min-height:400px;">
+                                    <img src="{{ URL::to('/thumbnail_posts/'.$new->thumbnail) }}" class="d-block w-100 image-fix">
                                     <div class="isi">
                                         <div class="row" style="height:50px;">
                                             <div class="col my-auto ml-3">
@@ -66,8 +66,8 @@
                             </div>
                         @endforeach
                     </div>
-                </div>
-            @endif
+                @endif
+            </div>
         </div>
 
         @if(count($majors) > 0)
@@ -139,12 +139,21 @@
                 <div style="height:5px; width: 50px; background-color:yellow;" class="m-auto"></div>
             </div>
             <div class="row no-gutters">
-                <div class="col offset-lg-1">
+                <div class="col">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15866.30757025075!2d106.6377526!3d-6.1873334!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xbbf35137362e584d!2sSekolah%20Menengah%20Kejuruan%20Negeri%204%20Tangerang!5e0!3m2!1sid!2sid!4v1585557646148!5m2!1sid!2sid" width="100%" height="500" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                 </div>
-                <div class="col-lg-1"></div>
             </div>
         </div>
     </div>
+
+    <script>
+        $("#carouselJurusan").on('swipeleft', function(e) {
+            $("#carouselJurusan").carousel('next')
+        })
+
+        $("#carouselJurusan").on('swiperight', function(e) {
+            $("#carouselJurusan").carousel('prev')
+        })
+    </script>
 
 @endsection

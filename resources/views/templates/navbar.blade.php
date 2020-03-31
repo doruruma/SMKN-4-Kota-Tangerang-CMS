@@ -24,19 +24,24 @@
 
 @if(count($pages) > 0)
     <style scoped>
+        .image-fix {
+            max-height:400px !important;
+            min-height:400px !important;
+        }
+
         @media screen and (max-width:1024px) {
             .overflow-show {
                 overflow-x:scroll !important;
             }
 
             .image-fix {
-                min-height:200px !important;
-                max-height:200px !important;
+                min-height:150px !important;
+                max-height:150px !important;
             }
 
             .image-major-fix {
-                min-height:300px !important;
-                max-height:300px !important;
+                min-height:100px !important;
+                max-height:100px !important;
             }
 
             .text-center-fix {
