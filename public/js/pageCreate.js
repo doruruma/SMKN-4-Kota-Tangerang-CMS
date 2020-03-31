@@ -29,7 +29,7 @@ $(document).ready(() => {
           })
 
           setTimeout(() => {
-            window.location.href="/admin/posts"
+            window.location.href="/admin/pages"
         }, 2000)
       },
       error: function (rej) {

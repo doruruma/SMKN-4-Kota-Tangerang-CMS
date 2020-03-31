@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid d-md-none d-none d-sm-none d-lg-block">
     <div class="row" style="background-color:rgb(16,45,102);height:200px;z-index:100">
         <div class="col">
 

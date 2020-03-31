@@ -3,7 +3,7 @@
 @section('content')
 
 
-    <div class="container mt-4">
+    <div class="container mt-4" style="min-height: 100vh">
         {!! $page->content !!}
     </div>
 
