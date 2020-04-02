@@ -1,5 +1,6 @@
 <?php
 
+use App\Official;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,5 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RoleSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(CategorySeeder::class);
+        $this->call(PositionSeeder::class);
+        $this->call(OfficialSeeder::class);
     }
 }
