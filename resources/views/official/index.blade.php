@@ -61,7 +61,7 @@
                 <tr>
                   <td>{{ $i }}</td>
                   <td>{{ $item->name }}</td>
-                  <td>{{ $item->position }}</td>
+                  <td>{{ $item->position->position }}</td>
                   <td>
                     <a href="{{route('official.edit', $item->id)}}" class="btn btn-sm btn-default py-1"><i class="fas fa-pen text-info"></i></a>
                     <form action="{{route('official.delete', $item->id)}}" method="POST" class="d-inline py-1">

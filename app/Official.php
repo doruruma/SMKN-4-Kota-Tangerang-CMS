@@ -11,6 +11,6 @@ class Official extends Model
 
     public function position()
     {
-        return $this->belongsTo('App\position');
+        return $this->belongsTo('App\Position');
     }
 }
