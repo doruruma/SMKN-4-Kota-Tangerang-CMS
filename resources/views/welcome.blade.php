@@ -78,9 +78,31 @@
                 background-size: cover;
             }
 
-            @media screen and (max-width:1024px) {
+            .image-official-fix {
+                width:250px;
+                height:250px;
+            }
+
+            .image-prestasi-fix {
+                height: 200px;
+            }
+
+            .item-c:hover > * {
+                display: block !important;
+            }
+
+            @media screen and (max-width:720px) {
                 .overflow-show {
                     overflow-x:scroll !important;
+                }
+
+                .item-c > * {
+                    display: block !important;
+                }
+
+                .image-official-fix {
+                    width:200px;
+                    height:200px;
                 }
 
                 .image-fix {
@@ -93,8 +115,17 @@
                     max-height:200px !important;
                 }
 
+                .image-prestasi-fix {
+                    min-height:150px !important;
+                    max-height:150px !important;
+                }
+
                 .text-center-fix {
                     text-align: center;
+                }
+
+                .br-s {
+                    border-radius: 10px;
                 }
             }
         </style>

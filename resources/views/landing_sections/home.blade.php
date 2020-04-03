@@ -7,7 +7,7 @@
             <div class="row">
                 @if(count($news) > 0)
                     <div class="col-md-12 mt-3 col-lg-8 col-sm-12">
-                        <div id="carouselExampleControls" class="carousel slide" style="overflow: hidden; max-height:400px" data-interval="false" data-ride="carousel">
+                        <div id="carouselExampleControls" class="carousel slide br-s" style="overflow: hidden; max-height:400px" data-interval="false" data-ride="carousel">
                             @php $counter = 0; @endphp
                             @foreach($news as $new):
 
@@ -40,9 +40,9 @@
                 @endif
                 @if(count($events) > 0)
                     <div class="col-md-12 col-sm-12 col-lg-4 mt-3 {{ count($news) == 0 ? "offset-sm-8" : "" }}">
-                        <div class="row">
+                        <div class="row mt-2 my-lg-2">
                             <div class="col-8">
-                                <h5 class="bold mb-1">RECENT EVENTS</h5>
+                                <h5 class="bold">RECENT EVENTS</h5>
                             </div>
                             <div class="col">
                                 <a href="/events" class="text-secondary float-right">more</a>
@@ -68,6 +68,29 @@
                     </div>
                 @endif
             </div>
+            @if(count($prestasi) > 0)
+                <div id="prestasi" class="mt-5 mb-5">
+                    <div class="text-center">
+                        <h5 class="bold">PRESTASI</h5>
+                        <div style="height:5px; width: 50px; background-color:yellow;" class="m-auto"></div>
+                    </div>
+                    <div class="row mt-5 flex-nowrap overflow-show">
+                        @php $angka = 0 @endphp
+                        @foreach($prestasi as $prestas)
+                            <div class="col-lg-3 col-6 {{ !$angka++ ? "" : "pl-0" }}">
+                                <a href="{{ URL::to('/'.$prestas->category->slug.'/'.$prestas->slug) }}" class="text-dark card-s">
+                                    <div class="card text-center border-0 shadow-sm">
+                                        <img class="card-img-top image-prestasi-fix" src="/thumbnail_posts/{{ $prestas->thumbnail }}">
+                                        <div class="card-body open-sans">
+                                            <span class="bold bulet-2">{{ $prestas->title }}</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            @endif
         </div>
 
         @if(count($majors) > 0)
@@ -76,12 +99,12 @@
                     <h5 class="bold">PRODI JURUSAN</h5>
                     <div style="height:5px; width: 50px; background-color:yellow;" class="m-auto"></div>
                 </div>
-                <div id="carouselJurusan" class="carousel slide" data-ride="carousel" data-interval="false">
-                    <div class="row mt-5">
+                <div id="carouselJurusan" class="carousel slide mt-5" data-ride="carousel" data-interval="false">
+                    <div class="row">
                         <div class="col-1 d-none d-lg-block my-auto">
                             <a class="carousel-control-prev-icon bg-secondary float-left" href="#carouselJurusan" data-slide="prev" aria-hidden="true"></a>
                         </div>
-                        <div class="col-12 p-sm-5 p-md-5 p-xs-5 col-lg-10 carousel-inner" style="overflow-x: hidden">
+                        <div class="col-12 p-sm-5 p-md-5 p-lg-0 p-xs-5 col-lg-10 carousel-inner" style="overflow-x: hidden">
                             @php $counter = 0; @endphp
                             @foreach($majors as $major)
                                 <div class="carousel-item {{ !$counter++ ? "active" : "" }}">
@@ -95,7 +118,7 @@
                                                     <h3 class="bold">{{ $major->name }}</h3>
                                                     <div class="bulet mb-3">{!!$major->description!!}</div>
                                                     <div class="form-group">
-                                                        <a href="" class="btn" style="background-color: #1E54BF;color:white; width: 100px;">More</a>
+                                                        <a href="{{ URL::to('/major/'.$major->id) }}" class="btn" style="background-color: #1E54BF;color:white; width: 100px;">More</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -108,7 +131,6 @@
                             <a class="carousel-control-next-icon bg-secondary float-right" aria-hidden="true"  href="#carouselJurusan" data-slide="next"></a>
                         </div>
                     </div>
-
                 </div>
             </div>
         @endif
@@ -116,19 +138,22 @@
         @if(count($officials) > 0)
             <div id="officials" class="mt-5 mb-5">
                 <div class="text-center mb-5">
-                    <h5 class="bold">STAFF</h5>
+                    <h5 class="bold">OUR TEAM</h5>
                     <div style="height:5px; width: 50px; background-color:yellow;" class="m-auto"></div>
                 </div>
 
-                <div class="owl-carousel row">
-                    <div></div>
+                <div class="owl-carousel">
+                    @foreach($officials as $official)
+                        <div class="rounded-circle image-official-fix m-auto item-c" style="background-image:url({{ URL::to('/officials/'.$official->image) }});background-size:cover;display:flex;align-items:center;justify-content:center;text-align:center">
+                            <div style="z-index: 100" class="d-none">
+                                <h5 class="text-white" style="z-index:100">{{ $official->name }}</h5>
+                                <small class="text-white" style="z-index: 100">{{ $official->position->position }}</small>
+                            </div>
+                            <div class="image-official-fix m-auto d-none" style="position:absolute;background-color:rgba(30,84,191,0.36);top:0;bottom:0;left:0;right:0;border-radius:50%;z-index:80">
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
-            </div>
-        @endif
-
-        @if(count($prestasi) > 0)
-            <div id="prestasi" class="mt-5 mb-5">
-
             </div>
         @endif
 
@@ -148,13 +173,48 @@
     <script>
         $(document).ready(() => {
             let get = $(".bulet")
+            let get2 = $(".bulet-2")
+
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                responsiveClass: true,
+                nav: false,
+                margin: 10,
+                responsive: {
+                    0: {
+                        items: 2,
+                        loop: true,
+                        margin:3,
+                    },
+                    100: {
+                        items: 2,
+                        loop: true,
+                        margin:3
+                    },
+                    1000: {
+                        items: 4,
+                        loop: true
+                    }
+                }
+            })
 
             $.each(get, function(index, value) {
                 let string = $(value).html()
                 string = string.toString()
                 string = string.replace( /(<([^>]+)>)/ig, '')
-                let res = string.substring(0, 199)
+                let res = string.substring(0, 100)
                 $(value).html(res + "...")
+            })
+
+            $.each(get2, function(index, value) {
+                let string = $(value).html()
+                string = string.toString()
+                let res = string.substring(0, 25)
+                if(string.length > 25) {
+                    $(value).html(res + "..")
+                } else {
+                    $(value).html(string)
+                }
             })
         })
     </script>

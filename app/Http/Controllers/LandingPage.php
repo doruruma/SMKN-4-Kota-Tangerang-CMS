@@ -16,11 +16,11 @@ class LandingPage extends Controller
     public function index()
     {
         $pages = Page::where('published', 1)->get();
-        $official = Official::get();
+        $official = Official::orderBy('position_id','asc')->get();
 
         $news = Post::where('published', 1)->where('category_id', 1)->orderBy('created_at', 'desc')->limit(3)->get();
         $events = Post::where('published', 1)->where('category_id', 4)->orderBy('created_at', 'desc')->limit(4)->get();
-        $prestasi = Post::where('published', 1)->where('category_id', 3)->orderBy('created_at', 'desc')->limit(3)->get();
+        $prestasi = Post::where('published', 1)->where('category_id', 3)->orderBy('created_at', 'desc')->limit(4)->get();
 
         return view('landing_sections.home', [
             'pages' => $pages,
@@ -77,7 +77,6 @@ class LandingPage extends Controller
         $post = Post::where('published', 1)->where('category_id', 1)->orderBy('created_at', 'desc')->get();
         $pages = Page::where('published', 1)->get();
 
-        
         return view('landing_sections.landing_post',[
             'post' => $post,
             'pages' => $pages,
@@ -99,7 +98,6 @@ class LandingPage extends Controller
         $post = Post::where('published', 1)->where('category_id', 2)->orderBy('created_at', 'desc')->get();
         $pages = Page::where('published', 1)->get();
 
-        
         return view('landing_sections.landing_post',[
             'post' => $post,
             'pages' => $pages,
@@ -122,7 +120,7 @@ class LandingPage extends Controller
         $post = Post::where('published', 1)->where('category_id', 3)->orderBy('created_at', 'desc')->get();
         $pages = Page::where('published', 1)->get();
 
-        
+
         return view('landing_sections.landing_post',[
             'post' => $post,
             'pages' => $pages,
@@ -137,8 +135,6 @@ class LandingPage extends Controller
 
     public function event()
     {
-        
-
         //Latest articles
         $single = Post::where('published', 1)->orderBy('created_at', 'desc')->skip(0)->take(1)->get();
         $latest = Post::where('published', 1)->orderBy('created_at', 'desc')->skip(1)->take(3)->get();
@@ -146,7 +142,7 @@ class LandingPage extends Controller
         $post = Post::where('published', 1)->where('category_id', 4)->orderBy('created_at', 'desc')->get();
         $pages = Page::where('published', 1)->get();
 
-        
+
         return view('landing_sections.landing_post',[
             'post' => $post,
             'pages' => $pages,
@@ -156,9 +152,20 @@ class LandingPage extends Controller
             'categories' => Category::get(),
             'majors' => Major::get()
 
-        ]);  
-        
+        ]);
+
     }
 
-    
+    public function major($id)
+    {
+        $major = Major::findOrFail($id);
+
+        return view('landing_sections.major', [
+            'major' => $major,
+            'categories' => Category::get(),
+            'pages' => Page::where('published', 1)->get()
+        ]);
+    }
+
+
 }

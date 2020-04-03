@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark shadow-sm" style="background-color:#1E54BF;height:80px;z-index:100">
     <div class="container">
-        <a class="navbar-brand m-auto" href="/">
+        <a class="navbar-brand" href="/">
             <img width="190" src="{{ asset('/img/logo-header.png') }}" alt="">
         </a>
         <button class="navbar-toggler d-md-none d-none d-sm-none" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,7 +38,7 @@
 @endif
 <div class="w-100" style="height:5px;background-color:#EFFF0A;z-index:200;"></div>
 
-<div id="footer-nav" class="fixed-bottom navbar-expand navbar pb-0 bg-white border navbar-light d-md-block d-lg-none d-sm-block d-xs-block">
+<div id="footer-nav" class="fixed-bottom navbar-expand text-center navbar pb-0 bg-white border navbar-light d-md-block d-lg-none d-sm-block d-xs-block">
     <div class="navbar-nav m-auto my-auto">
         <div class="nav-item my-auto">
             <a href="{{ URL::to('/') }}" class="nav-link text-center"><span class='fa fa-home d-block'></span> Home</a>

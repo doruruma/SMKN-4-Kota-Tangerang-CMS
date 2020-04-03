@@ -97,7 +97,7 @@ class MajorController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'image' => 'required|mimes:jpeg,jpg,png',
+            'image' => 'nullable|mimes:jpeg,jpg,png',
             'description' => 'required'
         ]);
 
@@ -122,7 +122,11 @@ class MajorController extends Controller
             return redirect(route('major.index'))->with('success', 'data berhasil di edit');
         }
         else{
-
+            Major::whereId($id)->update([
+                'name' => $request->name,
+                'description' => $request->description
+            ]);
+            return redirect(route('major.index'))->with('success', 'data berhasil di edit');
         }
     }
 

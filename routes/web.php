@@ -37,7 +37,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('/admin/profile/update', 'AdminController@update')->name('admin.update');
 
     // Major Route
-    Route::resource('major', 'MajorController');
+    Route::resource('/admin/major', 'MajorController');
 
     // Post view
     Route::get('/admin/posts', 'PostController@get')->name('post.index');
@@ -83,6 +83,8 @@ Route::get('/news','LandingPage@news');
 Route::get('/articles', 'LandingPage@articles');
 Route::get('/prestasi', 'LandingPage@prestasi');
 Route::get('/events', 'LandingPage@event');
+
+Route::get('/major/{id}', 'LandingPage@major');
 
 //Post Page by category
 Route::get('/{post_category}/{post_slug}', 'LandingPage@post');

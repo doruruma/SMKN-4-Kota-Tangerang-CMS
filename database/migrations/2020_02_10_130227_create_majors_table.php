@@ -17,7 +17,7 @@ class CreateMajorsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->text('image');
-            $table->string('description');
+            $table->longText('description');
             $table->timestamps();
         });
     }
