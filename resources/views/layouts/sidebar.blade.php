@@ -6,10 +6,12 @@
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center bg-white justify-content-center mb-1" href="{{ route('dashboard') }}" style="color:#28479c">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
+        <div class="sidebar-brand-icon d-none" id="sidebar-text">
+            <img src="{{ asset('/img/LPC2.png') }}" alt="" height="20" class="my-auto"/>
         </div>
-        <div class="sidebar-brand-text mx-3">LPC<sup>3</sup></div>
+        <div class="sidebar-brand-text">
+          <img src="{{ asset('/img/LPC2.png') }}" alt="" height="40" class="my-auto"/>
+        </div>
       </a>
 
       <!-- Nav Item - Dashboard -->

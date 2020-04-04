@@ -11,7 +11,7 @@ small{
 
 /* Sidebar */
 .sidebar{
-  background: linear-gradient(to bottom, #51659c, #3b65da);
+  background-color:#25408B;
 }
 .nav-item span{
   font-weight: 700 !important;
