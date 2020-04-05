@@ -55,11 +55,8 @@
               <tbody>
                 @php $i = 1 @endphp
                 @foreach ($official as $item)
-                @php
-                    $i++
-                @endphp
                 <tr>
-                  <td>{{ $i }}</td>
+                  <td>{{ $i++ }}</td>
                   <td>{{ $item->name }}</td>
                   <td>{{ $item->position->position }}</td>
                   <td>
@@ -70,7 +67,6 @@
                     </form>
                   </td>
                 </tr>
-                @php $i++ @endphp
                 @endforeach
               </tbody>
 

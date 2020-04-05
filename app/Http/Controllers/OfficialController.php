@@ -83,15 +83,19 @@ class OfficialController extends Controller
         //pharse/put file to variable
         $file = $request->file('img');
 
+        $image = Official::where('id',$id)->first();
 
         //put name of image
-        $name_img = time().$request->file('img')->getClientOriginalName();
+        if($request->has('img')) {
+            $name_img = time().$request->file('img')->getClientOriginalName();
+        } else {
+            $name_img = $image->image;
+        }
 
         //set folder location
         $location = 'officials';
 
         //get image teacher by id
-        $image = Official::where('id',$id)->first();
 
         try {
 
@@ -101,12 +105,13 @@ class OfficialController extends Controller
             $official->image = $name_img;
             $official->save();
 
+            if($request->has('img')) {
+                //Delete image at image (teachers) dir.
+                file::delete('officials/'.$image->image);
 
-            //Delete image at image (teachers) dir.
-            file::delete('officials/'.$image->image);
-
-            //move file
-            $file->move($location,$name_img);
+                //move file
+                $file->move($location,$name_img);
+            }
 
 
            return redirect(route('official.index'));

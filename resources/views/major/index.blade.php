@@ -40,11 +40,8 @@
               <tbody>
                 @php $i = 1 @endphp
                 @foreach ($major as $item)
-                @php
-                    $i++
-                @endphp
                 <tr>
-                  <td>{{ $i }}</td>
+                  <td>{{ $i++ }}</td>
                   <td>{{$item->name}}</td>
                   <td><img src="{{asset('majors/'.$item->image)}}" alt="" class="img-fluid" style="height: 20vh"></td>
                   <td>
@@ -56,7 +53,6 @@
                     </form>
                   </td>
                 </tr>
-                @php $i++ @endphp
                 @endforeach
               </tbody>
 

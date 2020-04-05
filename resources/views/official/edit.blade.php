@@ -3,7 +3,7 @@
 @extends('layouts.app')
 
 @section('title', 'LPC | Edit Official Data')
-    
+
 @section('bodyClass', 'bg-light')
 
 @section('script')
@@ -32,6 +32,7 @@
           <div class="card-body">
             <form action="{{ route('official.update', $official->id) }}" method="POST" enctype="multipart/form-data">
               @csrf
+              @method('PUT')
 
               <div class="form-group row">
                 <label for="name" class="col-form-label col-2">Name</label>
