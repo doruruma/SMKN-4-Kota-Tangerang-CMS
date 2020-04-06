@@ -68,7 +68,7 @@
             }
 
             .image-fix {
-                height:400px !important;
+                height:420px !important;
                 width:100%;
             }
 
@@ -91,6 +91,11 @@
                 display: block !important;
             }
 
+            .image-official-fix p {
+                font-weight: 700;
+                margin-bottom:0px;
+            }
+
             @media screen and (max-width:720px) {
                 .overflow-show {
                     overflow-x:scroll !important;
@@ -101,8 +106,15 @@
                 }
 
                 .image-official-fix {
-                    width:200px;
-                    height:200px;
+                    width:165px;
+                    height:165px;
+                }
+
+                .image-official-fix p {
+                    font-size: 13px;
+                    font-weight: 700;
+                    margin-bottom:1px;
+                    padding: 10px;
                 }
 
                 .image-fix {

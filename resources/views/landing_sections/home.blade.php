@@ -7,12 +7,12 @@
             <div class="row">
                 @if(count($news) > 0)
                     <div class="col-md-12 mt-3 col-lg-8 col-sm-12">
-                        <div id="carouselExampleControls" class="carousel slide br-s" style="overflow: hidden; max-height:400px" data-interval="false" data-ride="carousel">
+                        <div id="carouselExampleControls" class="carousel slide br-s" style="overflow:hidden" data-interval="false" data-ride="carousel">
                             @php $counter = 0; @endphp
                             @foreach($news as $new):
 
                                 <div class="carousel-item {{ !$counter ? "active" : "" }}" style="max-width:100%;">
-                                    <img src="{{ URL::to('/thumbnail_posts/'.$new->thumbnail) }}" class="w-100 image-fix">
+                                    <img src="{{ URL::to('/thumbnail_posts/'.$new->thumbnail) }}" class="image-fix">
                                     <div class="isi">
                                         <div class="row" style="height:50px;">
                                             <div class="col my-auto ml-3">
@@ -99,7 +99,7 @@
                     <h5 class="bold">PRODI JURUSAN</h5>
                     <div style="height:5px; width: 50px; background-color:yellow;" class="m-auto"></div>
                 </div>
-                <div id="carouselJurusan" class="carousel slide mt-5" data-ride="carousel" data-interval="false">
+                <div id="carouselJurusan" style="overflow:hidden;" class="carousel slide mt-5" data-ride="carousel" data-interval="false">
                     <div class="row">
                         <div class="col-1 d-none d-lg-block my-auto">
                             <a class="carousel-control-prev-icon bg-secondary float-left" href="#carouselJurusan" data-slide="prev" aria-hidden="true"></a>
@@ -144,9 +144,9 @@
 
                 <div class="owl-carousel">
                     @foreach($officials as $official)
-                        <div class="rounded-circle image-official-fix m-auto item-c" style="background-image:url({{ URL::to('/officials/'.$official->image) }});background-size:cover;display:flex;align-items:center;justify-content:center;text-align:center">
+                        <div class="rounded-circle m-auto image-official-fix item-c" style="background-image:url({{ URL::to('/officials/'.$official->image) }});background-size:cover;display:flex;align-items:center;justify-content:center;text-align:center">
                             <div style="z-index: 100" class="d-none">
-                                <h5 class="text-white" style="z-index:100">{{ $official->name }}</h5>
+                                <p class="text-white" style="z-index:100">{{ $official->name }}</p>
                                 <small class="text-white" style="z-index: 100">{{ $official->position->position }}</small>
                             </div>
                             <div class="image-official-fix m-auto d-none" style="position:absolute;background-color:rgba(30,84,191,0.36);top:0;bottom:0;left:0;right:0;border-radius:50%;z-index:80">
@@ -176,24 +176,19 @@
             let get2 = $(".bulet-2")
 
             $('.owl-carousel').owlCarousel({
-                loop: true,
+                loop: false,
                 responsiveClass: true,
                 nav: false,
                 margin: 10,
                 responsive: {
                     0: {
                         items: 2,
-                        loop: true,
-                        margin:3,
                     },
                     100: {
                         items: 2,
-                        loop: true,
-                        margin:3
                     },
                     1000: {
                         items: 4,
-                        loop: true
                     }
                 }
             })

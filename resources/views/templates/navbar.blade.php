@@ -40,19 +40,19 @@
 
 <div id="footer-nav" class="fixed-bottom navbar-expand text-center navbar pb-0 bg-white border navbar-light d-md-block d-lg-none d-sm-block d-xs-block">
     <div class="navbar-nav m-auto my-auto">
-        <div class="nav-item my-auto">
+        <div class="nav-item my-auto d-inline-block">
             <a href="{{ URL::to('/') }}" class="nav-link text-center"><span class='fa fa-home d-block'></span> Home</a>
         </div>
-        <div class="nav-item my-auto">
+        <div class="nav-item my-auto d-inline-block">
             <a href="{{ URL::to('/news') }}" class="nav-link text-center"><span class='fa fa-newspaper d-block'></span> News</a>
         </div>
-        <div class="nav-item my-auto">
+        <div class="nav-item my-auto d-inline-block">
             <a href="{{ URL::to('/prestasi') }}" class="nav-link text-center"><span class='fa fa-trophy d-block'></span> Prestasi</a>
         </div>
-        <div class="nav-item my-auto">
+        <div class="nav-item my-auto d-inline-block">
             <a href="{{ URL::to('/articles') }}" class="nav-link text-center"><span class='fa fa-file-alt d-block'></span> Articles</a>
         </div>
-        <div class="nav-item my-auto">
+        <div class="nav-item my-auto d-inline-block">
             <a href="{{ URL::to('/events') }}" class="nav-link text-center"><span class='fa fa-calendar-alt d-block'></span> Events</a>
         </div>
     </div>
